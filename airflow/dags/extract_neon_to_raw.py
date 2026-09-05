@@ -9,10 +9,9 @@ For each business table, this DAG:
 Schedule: daily
 """
 
-from datetime import datetime
+from datetime import datetime, timedelta
 from io import StringIO
 
-import pandas as pd
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.providers.postgres.hooks.postgres import PostgresHook
@@ -31,6 +30,13 @@ CONTAINER_NAME = "raw"
 POSTGRES_CONN_ID = "neon_postgres"
 AZURE_CONN_ID = "azure_data_lake"
 
+default_args = {
+    "retries": 3,
+    "retry_delay": timedelta(seconds=30),
+    "retry_exponential_backoff": True,
+    "max_retry_delay": timedelta(minutes=5),
+}
+
 
 def extract_and_upload(table_name: str, **context):
     # 1. Extract from Neon
@@ -42,7 +48,7 @@ def extract_and_upload(table_name: str, **context):
     df.to_csv(csv_buffer, index=False)
     csv_data = csv_buffer.getvalue()
 
-    # 3. Upload to Azure Blob Storage (raw container)
+    # 3. Upload to Azure Data Lake (raw container)
     execution_date = context["ds"]  # e.g. "2026-09-05"
     blob_name = f"{table_name}/{execution_date}/{table_name}.csv"
 
@@ -63,6 +69,8 @@ with DAG(
     start_date=datetime(2026, 1, 1),
     schedule_interval="@daily",
     catchup=False,
+    default_args=default_args,
+    max_active_tasks=3,  # limit parallelism to avoid overwhelming Neon's pooler
     tags=["datafusion", "ingestion", "raw"],
 ) as dag:
 
