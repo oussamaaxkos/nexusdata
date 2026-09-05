@@ -1,0 +1,279 @@
+airflow-worker-1  | 
+airflow-worker-1  | 
+airflow-worker-1  | !!!!!  Installing additional requirements: 'apache-airflow-providers-microsoft-azure psycopg2-binary pandas' !!!!!!!!!!!!
+airflow-worker-1  | 
+airflow-worker-1  | WARNING: This is a development/test feature only. NEVER use it in production!
+airflow-worker-1  |          Instead, build a custom image as described in
+airflow-worker-1  | 
+airflow-worker-1  |          https://airflow.apache.org/docs/docker-stack/build.html
+airflow-worker-1  | 
+airflow-worker-1  |          Adding requirements at container startup is fragile and is done every time
+airflow-worker-1  |          the container starts, so it is only useful for testing and trying out
+airflow-worker-1  |          of adding dependencies.
+airflow-worker-1  | 
+airflow-worker-1  | Requirement already satisfied: apache-airflow-providers-microsoft-azure in /home/airflow/.local/lib/python3.12/site-packages (12.0.0)
+airflow-worker-1  | Requirement already satisfied: psycopg2-binary in /home/airflow/.local/lib/python3.12/site-packages (2.9.10)
+airflow-worker-1  | Requirement already satisfied: pandas in /home/airflow/.local/lib/python3.12/site-packages (2.1.4)
+airflow-worker-1  | Requirement already satisfied: adal>=1.2.7 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-microsoft-azure) (1.2.7)
+airflow-worker-1  | Requirement already satisfied: adlfs>=2023.10.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-microsoft-azure) (2024.12.0)
+airflow-worker-1  | Requirement already satisfied: apache-airflow>=2.9.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-microsoft-azure) (2.10.5)
+airflow-worker-1  | Requirement already satisfied: azure-batch>=8.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-microsoft-azure) (14.2.0)
+airflow-worker-1  | Requirement already satisfied: azure-cosmos>=4.6.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-microsoft-azure) (4.9.0)
+airflow-worker-1  | Requirement already satisfied: azure-datalake-store>=0.0.45 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-microsoft-azure) (0.0.53)
+airflow-worker-1  | Requirement already satisfied: azure-identity>=1.3.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-microsoft-azure) (1.19.0)
+airflow-worker-1  | Requirement already satisfied: azure-keyvault-secrets>=4.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-microsoft-azure) (4.9.0)
+airflow-worker-1  | Requirement already satisfied: azure-kusto-data!=4.6.0,>=4.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-microsoft-azure) (4.6.3)
+airflow-worker-1  | Requirement already satisfied: azure-mgmt-containerinstance>=10.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-microsoft-azure) (10.1.0)
+airflow-worker-1  | Requirement already satisfied: azure-mgmt-containerregistry>=8.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-microsoft-azure) (10.3.0)
+airflow-worker-1  | Requirement already satisfied: azure-mgmt-cosmosdb>=3.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-microsoft-azure) (9.7.0)
+airflow-worker-1  | Requirement already satisfied: azure-mgmt-datafactory>=2.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-microsoft-azure) (9.1.0)
+airflow-worker-1  | Requirement already satisfied: azure-mgmt-datalake-store>=0.5.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-microsoft-azure) (0.5.0)
+airflow-worker-1  | Requirement already satisfied: azure-mgmt-resource>=2.2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-microsoft-azure) (23.2.0)
+airflow-worker-1  | Requirement already satisfied: azure-mgmt-storage>=16.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-microsoft-azure) (22.0.0)
+airflow-worker-1  | Requirement already satisfied: azure-servicebus>=7.12.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-microsoft-azure) (7.13.0)
+airflow-worker-1  | Requirement already satisfied: azure-storage-blob>=12.14.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-microsoft-azure) (12.24.1)
+airflow-worker-1  | Requirement already satisfied: azure-storage-file-datalake>=12.9.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-microsoft-azure) (12.18.1)
+airflow-worker-1  | Requirement already satisfied: azure-storage-file-share>=12.7.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-microsoft-azure) (12.20.1)
+airflow-worker-1  | Requirement already satisfied: azure-synapse-artifacts>=0.17.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-microsoft-azure) (0.19.0)
+airflow-worker-1  | Requirement already satisfied: azure-synapse-spark>=0.2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-microsoft-azure) (0.7.0)
+airflow-worker-1  | Requirement already satisfied: microsoft-kiota-abstractions<1.4.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-microsoft-azure) (1.3.3)
+airflow-worker-1  | Requirement already satisfied: microsoft-kiota-http!=1.3.4,>=1.3.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-microsoft-azure) (1.3.3)
+airflow-worker-1  | Requirement already satisfied: microsoft-kiota-serialization-json==1.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-microsoft-azure) (1.0.0)
+airflow-worker-1  | Requirement already satisfied: microsoft-kiota-serialization-text==1.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-microsoft-azure) (1.0.0)
+airflow-worker-1  | Requirement already satisfied: msgraph-core!=1.1.8,>=1.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-microsoft-azure) (1.2.1)
+airflow-worker-1  | Requirement already satisfied: pendulum>=2.1.2 in /home/airflow/.local/lib/python3.12/site-packages (from microsoft-kiota-serialization-json==1.0.0->apache-airflow-providers-microsoft-azure) (3.0.0)
+airflow-worker-1  | Requirement already satisfied: python-dateutil>=2.8.2 in /home/airflow/.local/lib/python3.12/site-packages (from microsoft-kiota-serialization-text==1.0.0->apache-airflow-providers-microsoft-azure) (2.9.0.post0)
+airflow-worker-1  | Requirement already satisfied: numpy<2,>=1.26.0 in /home/airflow/.local/lib/python3.12/site-packages (from pandas) (1.26.4)
+airflow-worker-1  | Requirement already satisfied: pytz>=2020.1 in /home/airflow/.local/lib/python3.12/site-packages (from pandas) (2025.1)
+airflow-worker-1  | Requirement already satisfied: tzdata>=2022.1 in /home/airflow/.local/lib/python3.12/site-packages (from pandas) (2025.1)
+airflow-worker-1  | Requirement already satisfied: PyJWT<3,>=1.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from adal>=1.2.7->apache-airflow-providers-microsoft-azure) (2.10.1)
+airflow-worker-1  | Requirement already satisfied: requests<3,>=2.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from adal>=1.2.7->apache-airflow-providers-microsoft-azure) (2.32.3)
+airflow-worker-1  | Requirement already satisfied: cryptography>=1.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from adal>=1.2.7->apache-airflow-providers-microsoft-azure) (42.0.8)
+airflow-worker-1  | Requirement already satisfied: azure-core<2.0.0,>=1.28.0 in /home/airflow/.local/lib/python3.12/site-packages (from adlfs>=2023.10.0->apache-airflow-providers-microsoft-azure) (1.32.0)
+airflow-worker-1  | Requirement already satisfied: fsspec>=2023.12.0 in /home/airflow/.local/lib/python3.12/site-packages (from adlfs>=2023.10.0->apache-airflow-providers-microsoft-azure) (2025.2.0)
+airflow-worker-1  | Requirement already satisfied: aiohttp>=3.7.0 in /home/airflow/.local/lib/python3.12/site-packages (from adlfs>=2023.10.0->apache-airflow-providers-microsoft-azure) (3.11.11)
+airflow-worker-1  | Requirement already satisfied: alembic<2.0,>=1.13.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.14.1)
+airflow-worker-1  | Requirement already satisfied: argcomplete>=1.10 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (3.5.3)
+airflow-worker-1  | Requirement already satisfied: asgiref>=2.3.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (3.8.1)
+airflow-worker-1  | Requirement already satisfied: attrs>=22.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (25.1.0)
+airflow-worker-1  | Requirement already satisfied: blinker>=1.6.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.9.0)
+airflow-worker-1  | Requirement already satisfied: colorlog>=6.8.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (6.9.0)
+airflow-worker-1  | Requirement already satisfied: configupdater>=3.1.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (3.2)
+airflow-worker-1  | Requirement already satisfied: connexion<3.0,>=2.14.2 in /home/airflow/.local/lib/python3.12/site-packages (from connexion[flask]<3.0,>=2.14.2->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (2.14.2)
+airflow-worker-1  | Requirement already satisfied: cron-descriptor>=1.2.24 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.4.5)
+airflow-worker-1  | Requirement already satisfied: croniter>=2.0.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (6.0.0)
+airflow-worker-1  | Requirement already satisfied: deprecated>=1.2.13 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.2.18)
+airflow-worker-1  | Requirement already satisfied: dill>=0.2.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (0.3.9)
+airflow-worker-1  | Requirement already satisfied: flask-caching>=2.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (2.3.0)
+airflow-worker-1  | Requirement already satisfied: flask-session<0.6,>=0.4.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (0.5.0)
+airflow-worker-1  | Requirement already satisfied: flask-wtf>=1.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.2.2)
+airflow-worker-1  | Requirement already satisfied: flask<2.3,>=2.2.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (2.2.5)
+airflow-worker-1  | Requirement already satisfied: google-re2>=1.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.1.20240702)
+airflow-worker-1  | Requirement already satisfied: gunicorn>=20.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (23.0.0)
+airflow-worker-1  | Requirement already satisfied: httpx>=0.25.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (0.27.0)
+airflow-worker-1  | Requirement already satisfied: itsdangerous>=2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (2.2.0)
+airflow-worker-1  | Requirement already satisfied: jinja2>=3.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (3.1.5)
+airflow-worker-1  | Requirement already satisfied: jsonschema>=4.18.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (4.23.0)
+airflow-worker-1  | Requirement already satisfied: lazy-object-proxy>=1.2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.10.0)
+airflow-worker-1  | Requirement already satisfied: linkify-it-py>=2.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (2.0.3)
+airflow-worker-1  | Requirement already satisfied: lockfile>=0.12.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (0.12.2)
+airflow-worker-1  | Requirement already satisfied: markdown-it-py>=2.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (3.0.0)
+airflow-worker-1  | Requirement already satisfied: markupsafe>=1.1.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (3.0.2)
+airflow-worker-1  | Requirement already satisfied: marshmallow-oneofschema>=2.0.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (3.1.1)
+airflow-worker-1  | Requirement already satisfied: mdit-py-plugins>=0.3.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (0.4.2)
+airflow-worker-1  | Requirement already satisfied: methodtools>=0.4.7 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (0.4.7)
+airflow-worker-1  | Requirement already satisfied: opentelemetry-api>=1.24.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.27.0)
+airflow-worker-1  | Requirement already satisfied: opentelemetry-exporter-otlp>=1.24.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.27.0)
+airflow-worker-1  | Requirement already satisfied: packaging>=23.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (24.2)
+airflow-worker-1  | Requirement already satisfied: pathspec>=0.9.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (0.12.1)
+airflow-worker-1  | Requirement already satisfied: pluggy>=1.5.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.5.0)
+airflow-worker-1  | Requirement already satisfied: psutil>=5.8.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (6.1.1)
+airflow-worker-1  | Requirement already satisfied: pygments>=2.0.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (2.19.1)
+airflow-worker-1  | Requirement already satisfied: python-daemon>=3.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (3.1.2)
+airflow-worker-1  | Requirement already satisfied: python-nvd3>=0.15.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (0.16.0)
+airflow-worker-1  | Requirement already satisfied: python-slugify>=5.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (8.0.4)
+airflow-worker-1  | Requirement already satisfied: requests-toolbelt>=0.4.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.0.0)
+airflow-worker-1  | Requirement already satisfied: rfc3339-validator>=0.1.4 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (0.1.4)
+airflow-worker-1  | Requirement already satisfied: rich-argparse>=1.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.6.0)
+airflow-worker-1  | Requirement already satisfied: rich>=12.4.4 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (13.9.4)
+airflow-worker-1  | Requirement already satisfied: setproctitle>=1.3.3 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.3.4)
+airflow-worker-1  | Requirement already satisfied: sqlalchemy<2.0,>=1.4.36 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.4.54)
+airflow-worker-1  | Requirement already satisfied: sqlalchemy-jsonfield>=1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.0.2)
+airflow-worker-1  | Requirement already satisfied: tabulate>=0.7.5 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (0.9.0)
+airflow-worker-1  | Requirement already satisfied: tenacity!=8.2.0,>=8.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (9.0.0)
+airflow-worker-1  | Requirement already satisfied: termcolor>=1.1.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (2.5.0)
+airflow-worker-1  | Requirement already satisfied: universal-pathlib!=0.2.4,>=0.2.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (0.2.6)
+airflow-worker-1  | Requirement already satisfied: werkzeug<3,>=2.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (2.2.3)
+airflow-worker-1  | Requirement already satisfied: apache-airflow-providers-common-compat in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.3.0)
+airflow-worker-1  | Requirement already satisfied: apache-airflow-providers-common-io in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.5.0)
+airflow-worker-1  | Requirement already satisfied: apache-airflow-providers-common-sql in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.21.0)
+airflow-worker-1  | Requirement already satisfied: apache-airflow-providers-fab>=1.0.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.5.2)
+airflow-worker-1  | Requirement already satisfied: apache-airflow-providers-ftp in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (3.12.0)
+airflow-worker-1  | Requirement already satisfied: apache-airflow-providers-http in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (5.0.0)
+airflow-worker-1  | Requirement already satisfied: apache-airflow-providers-imap in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (3.8.0)
+airflow-worker-1  | Requirement already satisfied: apache-airflow-providers-smtp in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.9.0)
+airflow-worker-1  | Requirement already satisfied: apache-airflow-providers-sqlite in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (4.0.0)
+airflow-worker-1  | Requirement already satisfied: msrestazure<2.0.0,>=0.4.32 in /home/airflow/.local/lib/python3.12/site-packages (from azure-batch>=8.0.0->apache-airflow-providers-microsoft-azure) (0.6.4.post1)
+airflow-worker-1  | Requirement already satisfied: azure-common~=1.1 in /home/airflow/.local/lib/python3.12/site-packages (from azure-batch>=8.0.0->apache-airflow-providers-microsoft-azure) (1.1.28)
+airflow-worker-1  | Requirement already satisfied: typing-extensions>=4.6.0 in /home/airflow/.local/lib/python3.12/site-packages (from azure-cosmos>=4.6.0->apache-airflow-providers-microsoft-azure) (4.12.2)
+airflow-worker-1  | Requirement already satisfied: cffi in /home/airflow/.local/lib/python3.12/site-packages (from azure-datalake-store>=0.0.45->apache-airflow-providers-microsoft-azure) (1.17.1)
+airflow-worker-1  | Requirement already satisfied: msal<2,>=1.16.0 in /home/airflow/.local/lib/python3.12/site-packages (from azure-datalake-store>=0.0.45->apache-airflow-providers-microsoft-azure) (1.31.1)
+airflow-worker-1  | Requirement already satisfied: msal-extensions>=1.2.0 in /home/airflow/.local/lib/python3.12/site-packages (from azure-identity>=1.3.1->apache-airflow-providers-microsoft-azure) (1.2.0)
+airflow-worker-1  | Requirement already satisfied: isodate>=0.6.1 in /home/airflow/.local/lib/python3.12/site-packages (from azure-keyvault-secrets>=4.1.0->apache-airflow-providers-microsoft-azure) (0.7.2)
+airflow-worker-1  | Requirement already satisfied: ijson~=3.1 in /home/airflow/.local/lib/python3.12/site-packages (from azure-kusto-data!=4.6.0,>=4.1.0->apache-airflow-providers-microsoft-azure) (3.3.0)
+airflow-worker-1  | Requirement already satisfied: azure-mgmt-core<2.0.0,>=1.3.2 in /home/airflow/.local/lib/python3.12/site-packages (from azure-mgmt-containerinstance>=10.1.0->apache-airflow-providers-microsoft-azure) (1.5.0)
+airflow-worker-1  | Requirement already satisfied: azure-mgmt-datalake-nspkg>=2.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from azure-mgmt-datalake-store>=0.5.0->apache-airflow-providers-microsoft-azure) (3.0.1)
+airflow-worker-1  | Requirement already satisfied: msrest>=0.5.0 in /home/airflow/.local/lib/python3.12/site-packages (from azure-synapse-spark>=0.2.0->apache-airflow-providers-microsoft-azure) (0.7.1)
+airflow-worker-1  | Requirement already satisfied: std-uritemplate>=0.0.38 in /home/airflow/.local/lib/python3.12/site-packages (from microsoft-kiota-abstractions<1.4.0->apache-airflow-providers-microsoft-azure) (2.0.1)
+airflow-worker-1  | Requirement already satisfied: opentelemetry-sdk>=1.19.0 in /home/airflow/.local/lib/python3.12/site-packages (from microsoft-kiota-abstractions<1.4.0->apache-airflow-providers-microsoft-azure) (1.27.0)
+airflow-worker-1  | Requirement already satisfied: microsoft-kiota-authentication-azure<2.0.0,>=1.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from msgraph-core!=1.1.8,>=1.0.0->apache-airflow-providers-microsoft-azure) (1.1.0)
+airflow-worker-1  | Requirement already satisfied: six>=1.5 in /home/airflow/.local/lib/python3.12/site-packages (from python-dateutil>=2.8.2->microsoft-kiota-serialization-text==1.0.0->apache-airflow-providers-microsoft-azure) (1.17.0)
+airflow-worker-1  | Requirement already satisfied: aiohappyeyeballs>=2.3.0 in /home/airflow/.local/lib/python3.12/site-packages (from aiohttp>=3.7.0->adlfs>=2023.10.0->apache-airflow-providers-microsoft-azure) (2.4.4)
+airflow-worker-1  | Requirement already satisfied: aiosignal>=1.1.2 in /home/airflow/.local/lib/python3.12/site-packages (from aiohttp>=3.7.0->adlfs>=2023.10.0->apache-airflow-providers-microsoft-azure) (1.3.2)
+airflow-worker-1  | Requirement already satisfied: frozenlist>=1.1.1 in /home/airflow/.local/lib/python3.12/site-packages (from aiohttp>=3.7.0->adlfs>=2023.10.0->apache-airflow-providers-microsoft-azure) (1.5.0)
+airflow-worker-1  | Requirement already satisfied: multidict<7.0,>=4.5 in /home/airflow/.local/lib/python3.12/site-packages (from aiohttp>=3.7.0->adlfs>=2023.10.0->apache-airflow-providers-microsoft-azure) (6.1.0)
+airflow-worker-1  | Requirement already satisfied: propcache>=0.2.0 in /home/airflow/.local/lib/python3.12/site-packages (from aiohttp>=3.7.0->adlfs>=2023.10.0->apache-airflow-providers-microsoft-azure) (0.2.1)
+airflow-worker-1  | Requirement already satisfied: yarl<2.0,>=1.17.0 in /home/airflow/.local/lib/python3.12/site-packages (from aiohttp>=3.7.0->adlfs>=2023.10.0->apache-airflow-providers-microsoft-azure) (1.18.3)
+airflow-worker-1  | Requirement already satisfied: Mako in /home/airflow/.local/lib/python3.12/site-packages (from alembic<2.0,>=1.13.1->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.3.8)
+airflow-worker-1  | Requirement already satisfied: flask-appbuilder==4.5.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (4.5.2)
+airflow-worker-1  | Requirement already satisfied: flask-login>=0.6.2 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (0.6.3)
+airflow-worker-1  | Requirement already satisfied: jmespath>=0.7.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (0.10.0)
+airflow-worker-1  | Requirement already satisfied: apispec<7,>=6.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apispec[yaml]<7,>=6.0.0->flask-appbuilder==4.5.2->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (6.8.1)
+airflow-worker-1  | Requirement already satisfied: colorama<1,>=0.3.9 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.5.2->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (0.4.6)
+airflow-worker-1  | Requirement already satisfied: click<9,>=8 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.5.2->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (8.1.8)
+airflow-worker-1  | Requirement already satisfied: email-validator>=1.0.5 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.5.2->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (2.2.0)
+airflow-worker-1  | Requirement already satisfied: Flask-Babel<3,>=1 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.5.2->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (2.0.0)
+airflow-worker-1  | Requirement already satisfied: Flask-Limiter<4,>3 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.5.2->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (3.10.1)
+airflow-worker-1  | Requirement already satisfied: Flask-SQLAlchemy<3,>=2.4 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.5.2->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (2.5.1)
+airflow-worker-1  | Requirement already satisfied: Flask-JWT-Extended<5.0.0,>=4.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.5.2->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (4.7.1)
+airflow-worker-1  | Requirement already satisfied: marshmallow<4,>=3.18.0 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.5.2->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (3.26.0)
+airflow-worker-1  | Requirement already satisfied: marshmallow-sqlalchemy<0.29.0,>=0.22.0 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.5.2->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (0.28.2)
+airflow-worker-1  | Requirement already satisfied: prison<1.0.0,>=0.2.1 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.5.2->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (0.2.1)
+airflow-worker-1  | Requirement already satisfied: sqlalchemy-utils<1,>=0.32.21 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.5.2->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (0.41.2)
+airflow-worker-1  | Requirement already satisfied: WTForms<4 in /home/airflow/.local/lib/python3.12/site-packages (from flask-appbuilder==4.5.2->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (3.2.1)
+airflow-worker-1  | Requirement already satisfied: azure-mgmt-nspkg>=3.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from azure-mgmt-datalake-nspkg>=2.0.0->azure-mgmt-datalake-store>=0.5.0->apache-airflow-providers-microsoft-azure) (3.0.2)
+airflow-worker-1  | Requirement already satisfied: clickclick<21,>=1.2 in /home/airflow/.local/lib/python3.12/site-packages (from connexion<3.0,>=2.14.2->connexion[flask]<3.0,>=2.14.2->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (20.10.2)
+airflow-worker-1  | Requirement already satisfied: PyYAML<7,>=5.1 in /home/airflow/.local/lib/python3.12/site-packages (from connexion<3.0,>=2.14.2->connexion[flask]<3.0,>=2.14.2->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (6.0.2)
+airflow-worker-1  | Requirement already satisfied: inflection<0.6,>=0.3.1 in /home/airflow/.local/lib/python3.12/site-packages (from connexion<3.0,>=2.14.2->connexion[flask]<3.0,>=2.14.2->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (0.5.1)
+airflow-worker-1  | Requirement already satisfied: pycparser in /home/airflow/.local/lib/python3.12/site-packages (from cffi->azure-datalake-store>=0.0.45->apache-airflow-providers-microsoft-azure) (2.22)
+airflow-worker-1  | Requirement already satisfied: wrapt<2,>=1.10 in /home/airflow/.local/lib/python3.12/site-packages (from deprecated>=1.2.13->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.17.2)
+airflow-worker-1  | Requirement already satisfied: cachelib<0.10.0,>=0.9.0 in /home/airflow/.local/lib/python3.12/site-packages (from flask-caching>=2.0.0->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (0.9.0)
+airflow-worker-1  | Requirement already satisfied: anyio in /home/airflow/.local/lib/python3.12/site-packages (from httpx>=0.25.0->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (4.8.0)
+airflow-worker-1  | Requirement already satisfied: certifi in /home/airflow/.local/lib/python3.12/site-packages (from httpx>=0.25.0->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (2025.1.31)
+airflow-worker-1  | Requirement already satisfied: httpcore==1.* in /home/airflow/.local/lib/python3.12/site-packages (from httpx>=0.25.0->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.0.7)
+airflow-worker-1  | Requirement already satisfied: idna in /home/airflow/.local/lib/python3.12/site-packages (from httpx>=0.25.0->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (3.10)
+airflow-worker-1  | Requirement already satisfied: sniffio in /home/airflow/.local/lib/python3.12/site-packages (from httpx>=0.25.0->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.3.1)
+airflow-worker-1  | Requirement already satisfied: h11<0.15,>=0.13 in /home/airflow/.local/lib/python3.12/site-packages (from httpcore==1.*->httpx>=0.25.0->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (0.14.0)
+airflow-worker-1  | Requirement already satisfied: h2<5,>=3 in /home/airflow/.local/lib/python3.12/site-packages (from httpx[http2]>=0.23.0->microsoft-kiota-http!=1.3.4,>=1.3.0->apache-airflow-providers-microsoft-azure) (4.2.0)
+airflow-worker-1  | Requirement already satisfied: jsonschema-specifications>=2023.03.6 in /home/airflow/.local/lib/python3.12/site-packages (from jsonschema>=4.18.0->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (2024.10.1)
+airflow-worker-1  | Requirement already satisfied: referencing>=0.28.4 in /home/airflow/.local/lib/python3.12/site-packages (from jsonschema>=4.18.0->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (0.36.2)
+airflow-worker-1  | Requirement already satisfied: rpds-py>=0.7.1 in /home/airflow/.local/lib/python3.12/site-packages (from jsonschema>=4.18.0->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (0.22.3)
+airflow-worker-1  | Requirement already satisfied: uc-micro-py in /home/airflow/.local/lib/python3.12/site-packages (from linkify-it-py>=2.0.0->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.0.3)
+airflow-worker-1  | Requirement already satisfied: mdurl~=0.1 in /home/airflow/.local/lib/python3.12/site-packages (from markdown-it-py>=2.1.0->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (0.1.2)
+airflow-worker-1  | Requirement already satisfied: wirerope>=0.4.7 in /home/airflow/.local/lib/python3.12/site-packages (from methodtools>=0.4.7->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.0.0)
+airflow-worker-1  | Requirement already satisfied: portalocker<3,>=1.4 in /home/airflow/.local/lib/python3.12/site-packages (from msal-extensions>=1.2.0->azure-identity>=1.3.1->apache-airflow-providers-microsoft-azure) (2.10.1)
+airflow-worker-1  | Requirement already satisfied: requests-oauthlib>=0.5.0 in /home/airflow/.local/lib/python3.12/site-packages (from msrest>=0.5.0->azure-synapse-spark>=0.2.0->apache-airflow-providers-microsoft-azure) (1.3.1)
+airflow-worker-1  | Requirement already satisfied: importlib-metadata<=8.4.0,>=6.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-api>=1.24.0->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (6.11.0)
+airflow-worker-1  | Requirement already satisfied: opentelemetry-exporter-otlp-proto-grpc==1.27.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp>=1.24.0->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.27.0)
+airflow-worker-1  | Requirement already satisfied: opentelemetry-exporter-otlp-proto-http==1.27.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp>=1.24.0->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.27.0)
+airflow-worker-1  | Requirement already satisfied: googleapis-common-protos~=1.52 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp-proto-grpc==1.27.0->opentelemetry-exporter-otlp>=1.24.0->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.66.0)
+airflow-worker-1  | Requirement already satisfied: grpcio<2.0.0,>=1.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp-proto-grpc==1.27.0->opentelemetry-exporter-otlp>=1.24.0->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.70.0)
+airflow-worker-1  | Requirement already satisfied: opentelemetry-exporter-otlp-proto-common==1.27.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp-proto-grpc==1.27.0->opentelemetry-exporter-otlp>=1.24.0->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.27.0)
+airflow-worker-1  | Requirement already satisfied: opentelemetry-proto==1.27.0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-exporter-otlp-proto-grpc==1.27.0->opentelemetry-exporter-otlp>=1.24.0->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.27.0)
+airflow-worker-1  | Requirement already satisfied: protobuf<5.0,>=3.19 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-proto==1.27.0->opentelemetry-exporter-otlp-proto-grpc==1.27.0->opentelemetry-exporter-otlp>=1.24.0->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (4.25.6)
+airflow-worker-1  | Requirement already satisfied: opentelemetry-semantic-conventions==0.48b0 in /home/airflow/.local/lib/python3.12/site-packages (from opentelemetry-sdk>=1.19.0->microsoft-kiota-abstractions<1.4.0->apache-airflow-providers-microsoft-azure) (0.48b0)
+airflow-worker-1  | Requirement already satisfied: time-machine>=2.6.0 in /home/airflow/.local/lib/python3.12/site-packages (from pendulum>=2.1.2->microsoft-kiota-serialization-json==1.0.0->apache-airflow-providers-microsoft-azure) (2.16.0)
+airflow-worker-1  | Requirement already satisfied: text-unidecode>=1.3 in /home/airflow/.local/lib/python3.12/site-packages (from python-slugify>=5.0->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (1.3)
+airflow-worker-1  | Requirement already satisfied: charset-normalizer<4,>=2 in /home/airflow/.local/lib/python3.12/site-packages (from requests<3,>=2.0.0->adal>=1.2.7->apache-airflow-providers-microsoft-azure) (3.4.1)
+airflow-worker-1  | Requirement already satisfied: urllib3<3,>=1.21.1 in /home/airflow/.local/lib/python3.12/site-packages (from requests<3,>=2.0.0->adal>=1.2.7->apache-airflow-providers-microsoft-azure) (2.3.0)
+airflow-worker-1  | Requirement already satisfied: greenlet!=0.4.17 in /home/airflow/.local/lib/python3.12/site-packages (from sqlalchemy<2.0,>=1.4.36->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (3.1.1)
+airflow-worker-1  | Requirement already satisfied: more-itertools>=9.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-common-sql->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (10.6.0)
+airflow-worker-1  | Requirement already satisfied: sqlparse>=0.5.1 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-common-sql->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (0.5.3)
+airflow-worker-1  | Requirement already satisfied: aiosqlite>=0.20.0 in /home/airflow/.local/lib/python3.12/site-packages (from apache-airflow-providers-sqlite->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (0.20.0)
+airflow-worker-1  | Requirement already satisfied: azure-nspkg>=3.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from azure-mgmt-nspkg>=3.0.0->azure-mgmt-datalake-nspkg>=2.0.0->azure-mgmt-datalake-store>=0.5.0->apache-airflow-providers-microsoft-azure) (3.0.2)
+airflow-worker-1  | Requirement already satisfied: hyperframe<7,>=6.1 in /home/airflow/.local/lib/python3.12/site-packages (from h2<5,>=3->httpx[http2]>=0.23.0->microsoft-kiota-http!=1.3.4,>=1.3.0->apache-airflow-providers-microsoft-azure) (6.1.0)
+airflow-worker-1  | Requirement already satisfied: hpack<5,>=4.1 in /home/airflow/.local/lib/python3.12/site-packages (from h2<5,>=3->httpx[http2]>=0.23.0->microsoft-kiota-http!=1.3.4,>=1.3.0->apache-airflow-providers-microsoft-azure) (4.1.0)
+airflow-worker-1  | Requirement already satisfied: zipp>=0.5 in /home/airflow/.local/lib/python3.12/site-packages (from importlib-metadata<=8.4.0,>=6.0->opentelemetry-api>=1.24.0->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (3.21.0)
+airflow-worker-1  | Requirement already satisfied: oauthlib>=3.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from requests-oauthlib>=0.5.0->msrest>=0.5.0->azure-synapse-spark>=0.2.0->apache-airflow-providers-microsoft-azure) (3.2.2)
+airflow-worker-1  | Requirement already satisfied: dnspython>=2.0.0 in /home/airflow/.local/lib/python3.12/site-packages (from email-validator>=1.0.5->flask-appbuilder==4.5.2->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (2.7.0)
+airflow-worker-1  | Requirement already satisfied: Babel>=2.3 in /home/airflow/.local/lib/python3.12/site-packages (from Flask-Babel<3,>=1->flask-appbuilder==4.5.2->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (2.17.0)
+airflow-worker-1  | Requirement already satisfied: limits>=3.13 in /home/airflow/.local/lib/python3.12/site-packages (from Flask-Limiter<4,>3->flask-appbuilder==4.5.2->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (4.0.1)
+airflow-worker-1  | Requirement already satisfied: ordered-set<5,>4 in /home/airflow/.local/lib/python3.12/site-packages (from Flask-Limiter<4,>3->flask-appbuilder==4.5.2->apache-airflow-providers-fab>=1.0.2->apache-airflow>=2.9.0->apache-airflow-providers-microsoft-azure) (4.1.0)
+airflow-worker-1  | 
+airflow-worker-1  | [notice] A new release of pip is available: 25.0 -> 26.2.1
+airflow-worker-1  | [notice] To update, run: pip install --upgrade pip
+airflow-worker-1  | BACKEND=redis
+airflow-worker-1  | DB_HOST=redis
+airflow-worker-1  | DB_PORT=6379
+airflow-worker-1  | 
+airflow-worker-1  | [2026-09-04T23:52:03.711+0000] {configuration.py:2112} INFO - Creating new FAB webserver config file in: /opt/airflow/webserver_config.py
+airflow-worker-1  | [2026-09-04 23:52:05 +0000] [58] [INFO] Starting gunicorn 23.0.0
+airflow-worker-1  | [2026-09-04 23:52:05 +0000] [58] [INFO] Listening at: http://[::]:8793 (58)
+airflow-worker-1  | [2026-09-04 23:52:05 +0000] [58] [INFO] Using worker: sync
+airflow-worker-1  | [2026-09-04 23:52:05 +0000] [59] [INFO] Booting worker with pid: 59
+airflow-worker-1  | [2026-09-04 23:52:06 +0000] [60] [INFO] Booting worker with pid: 60
+airflow-worker-1  |  
+airflow-worker-1  |  -------------- celery@e91665bf5859 v5.4.0 (opalescent)
+airflow-worker-1  | --- ***** ----- 
+airflow-worker-1  | -- ******* ---- Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.36 2026-09-04 23:52:07
+airflow-worker-1  | - *** --- * --- 
+airflow-worker-1  | - ** ---------- [config]
+airflow-worker-1  | - ** ---------- .> app:         airflow.providers.celery.executors.celery_executor:0x7ac17e6cb650
+airflow-worker-1  | - ** ---------- .> transport:   redis://redis:6379/0
+airflow-worker-1  | - ** ---------- .> results:     postgresql://airflow:**@postgres/airflow
+airflow-worker-1  | - *** --- * --- .> concurrency: 16 (prefork)
+airflow-worker-1  | -- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+airflow-worker-1  | --- ***** ----- 
+airflow-worker-1  |  -------------- [queues]
+airflow-worker-1  |                 .> default          exchange=default(direct) key=default
+airflow-worker-1  |                 
+airflow-worker-1  | 
+airflow-worker-1  | [tasks]
+airflow-worker-1  |   . airflow.providers.celery.executors.celery_executor_utils.execute_command
+airflow-worker-1  | 
+airflow-worker-1  | [2026-09-04 23:52:16,313: WARNING/MainProcess] /home/airflow/.local/lib/python3.12/site-packages/celery/worker/consumer/consumer.py:508: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+airflow-worker-1  | whether broker connection retries are made during startup in Celery 6.0 and above.
+airflow-worker-1  | If you wish to retain the existing behavior for retrying connections on startup,
+airflow-worker-1  | you should set broker_connection_retry_on_startup to True.
+airflow-worker-1  |   warnings.warn(
+airflow-worker-1  | 
+airflow-worker-1  | [2026-09-04 23:52:16,334: INFO/MainProcess] Connected to redis://redis:6379/0
+airflow-worker-1  | [2026-09-04 23:52:16,341: WARNING/MainProcess] /home/airflow/.local/lib/python3.12/site-packages/celery/worker/consumer/consumer.py:508: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+airflow-worker-1  | whether broker connection retries are made during startup in Celery 6.0 and above.
+airflow-worker-1  | If you wish to retain the existing behavior for retrying connections on startup,
+airflow-worker-1  | you should set broker_connection_retry_on_startup to True.
+airflow-worker-1  |   warnings.warn(
+airflow-worker-1  | 
+airflow-worker-1  | [2026-09-04 23:52:16,347: INFO/MainProcess] mingle: searching for neighbors
+airflow-worker-1  | [2026-09-04 23:52:17,366: INFO/MainProcess] mingle: all alone
+airflow-worker-1  | [2026-09-04 23:52:17,411: INFO/MainProcess] celery@e91665bf5859 ready.
+airflow-worker-1  | [2026-09-05 00:50:08,850: INFO/MainProcess] Task airflow.providers.celery.executors.celery_executor_utils.execute_command[c4c96c89-49a5-46ad-9b46-abbcbcc446a4] received
+airflow-worker-1  | [2026-09-05 00:50:08,886: INFO/MainProcess] Task airflow.providers.celery.executors.celery_executor_utils.execute_command[479d4feb-ee41-474c-811e-849750a0d236] received
+airflow-worker-1  | [2026-09-05 00:50:08,892: INFO/MainProcess] Task airflow.providers.celery.executors.celery_executor_utils.execute_command[32b0b15f-2cd5-4444-948d-910fdede6f7a] received
+airflow-worker-1  | [2026-09-05 00:50:09,685: INFO/ForkPoolWorker-16] [479d4feb-ee41-474c-811e-849750a0d236] Executing command in Celery: ['airflow', 'tasks', 'run', 'extract_neon_to_raw', 'extract_customers', 'scheduled__2026-09-04T00:00:00+00:00', '--local', '--subdir', 'DAGS_FOLDER/extract_neon_to_raw.py']
+airflow-worker-1  | [2026-09-05 00:50:09,687: INFO/ForkPoolWorker-15] [c4c96c89-49a5-46ad-9b46-abbcbcc446a4] Executing command in Celery: ['airflow', 'tasks', 'run', 'extract_neon_to_raw', 'extract_shipments', 'scheduled__2026-09-04T00:00:00+00:00', '--local', '--subdir', 'DAGS_FOLDER/extract_neon_to_raw.py']
+airflow-worker-1  | [2026-09-05 00:50:09,876: INFO/ForkPoolWorker-1] [32b0b15f-2cd5-4444-948d-910fdede6f7a] Executing command in Celery: ['airflow', 'tasks', 'run', 'extract_neon_to_raw', 'extract_products', 'scheduled__2026-09-04T00:00:00+00:00', '--local', '--subdir', 'DAGS_FOLDER/extract_neon_to_raw.py']
+airflow-worker-1  | [2026-09-05 00:50:10,513: INFO/MainProcess] Task airflow.providers.celery.executors.celery_executor_utils.execute_command[33742386-64d7-4106-b16e-78c1347df3a6] received
+airflow-worker-1  | [2026-09-05 00:50:10,562: INFO/MainProcess] Task airflow.providers.celery.executors.celery_executor_utils.execute_command[00321949-39a4-49e6-a2bf-9a2d2ab1c84e] received
+airflow-worker-1  | [2026-09-05 00:50:10,759: INFO/MainProcess] Task airflow.providers.celery.executors.celery_executor_utils.execute_command[b7d4650b-a0f8-4bb5-b77b-b45f8dd08bb1] received
+airflow-worker-1  | [2026-09-05 00:50:11,630: INFO/ForkPoolWorker-3] [00321949-39a4-49e6-a2bf-9a2d2ab1c84e] Executing command in Celery: ['airflow', 'tasks', 'run', 'extract_neon_to_raw', 'extract_customers', 'manual__2026-09-05T00:50:05.642831+00:00', '--local', '--subdir', 'DAGS_FOLDER/extract_neon_to_raw.py']
+airflow-worker-1  | [2026-09-05 00:50:11,634: INFO/ForkPoolWorker-2] [33742386-64d7-4106-b16e-78c1347df3a6] Executing command in Celery: ['airflow', 'tasks', 'run', 'extract_neon_to_raw', 'extract_orders', 'scheduled__2026-09-04T00:00:00+00:00', '--local', '--subdir', 'DAGS_FOLDER/extract_neon_to_raw.py']
+airflow-worker-1  | [2026-09-05 00:50:11,713: INFO/ForkPoolWorker-4] [b7d4650b-a0f8-4bb5-b77b-b45f8dd08bb1] Executing command in Celery: ['airflow', 'tasks', 'run', 'extract_neon_to_raw', 'extract_order_items', 'manual__2026-09-05T00:50:05.642831+00:00', '--local', '--subdir', 'DAGS_FOLDER/extract_neon_to_raw.py']
+airflow-worker-1  | [2026-09-05 00:50:16,851: INFO/ForkPoolWorker-15] Filling up the DagBag from /opt/airflow/dags/extract_neon_to_raw.py
+airflow-worker-1  | [2026-09-05 00:50:16,851: INFO/ForkPoolWorker-4] Filling up the DagBag from /opt/airflow/dags/extract_neon_to_raw.py
+airflow-worker-1  | [2026-09-05 00:50:16,859: INFO/ForkPoolWorker-2] Filling up the DagBag from /opt/airflow/dags/extract_neon_to_raw.py
+airflow-worker-1  | [2026-09-05 00:50:16,897: INFO/ForkPoolWorker-1] Filling up the DagBag from /opt/airflow/dags/extract_neon_to_raw.py
+airflow-worker-1  | [2026-09-05 00:50:16,953: INFO/ForkPoolWorker-16] Filling up the DagBag from /opt/airflow/dags/extract_neon_to_raw.py
+airflow-worker-1  | [2026-09-05 00:50:17,035: INFO/ForkPoolWorker-3] Filling up the DagBag from /opt/airflow/dags/extract_neon_to_raw.py
+airflow-worker-1  | [2026-09-05 00:50:27,310: INFO/ForkPoolWorker-3] Running <TaskInstance: extract_neon_to_raw.extract_customers manual__2026-09-05T00:50:05.642831+00:00 [queued]> on host e91665bf5859
+airflow-worker-1  | [2026-09-05 00:50:27,329: INFO/ForkPoolWorker-16] Running <TaskInstance: extract_neon_to_raw.extract_customers scheduled__2026-09-04T00:00:00+00:00 [queued]> on host e91665bf5859
+airflow-worker-1  | [2026-09-05 00:50:27,349: INFO/ForkPoolWorker-4] Running <TaskInstance: extract_neon_to_raw.extract_order_items manual__2026-09-05T00:50:05.642831+00:00 [queued]> on host e91665bf5859
+airflow-worker-1  | [2026-09-05 00:50:27,503: INFO/ForkPoolWorker-1] Running <TaskInstance: extract_neon_to_raw.extract_products scheduled__2026-09-04T00:00:00+00:00 [queued]> on host e91665bf5859
+airflow-worker-1  | [2026-09-05 00:50:27,645: INFO/ForkPoolWorker-2] Running <TaskInstance: extract_neon_to_raw.extract_orders scheduled__2026-09-04T00:00:00+00:00 [queued]> on host e91665bf5859
+airflow-worker-1  | [2026-09-05 00:50:27,865: INFO/ForkPoolWorker-15] Running <TaskInstance: extract_neon_to_raw.extract_shipments scheduled__2026-09-04T00:00:00+00:00 [queued]> on host e91665bf5859
+airflow-worker-1  | [2026-09-05 00:50:31,543: INFO/ForkPoolWorker-1] Task airflow.providers.celery.executors.celery_executor_utils.execute_command[32b0b15f-2cd5-4444-948d-910fdede6f7a] succeeded in 22.581035712000812s: None
+airflow-worker-1  | [2026-09-05 00:50:31,563: INFO/ForkPoolWorker-16] Task airflow.providers.celery.executors.celery_executor_utils.execute_command[479d4feb-ee41-474c-811e-849750a0d236] succeeded in 22.572124901998905s: None
+airflow-worker-1  | [2026-09-05 00:50:31,596: INFO/ForkPoolWorker-3] Task airflow.providers.celery.executors.celery_executor_utils.execute_command[00321949-39a4-49e6-a2bf-9a2d2ab1c84e] succeeded in 20.987437515001147s: None
+airflow-worker-1  | [2026-09-05 00:50:31,608: INFO/ForkPoolWorker-15] Task airflow.providers.celery.executors.celery_executor_utils.execute_command[c4c96c89-49a5-46ad-9b46-abbcbcc446a4] succeeded in 22.651482657000088s: None
+airflow-worker-1  | [2026-09-05 00:50:31,626: INFO/ForkPoolWorker-2] Task airflow.providers.celery.executors.celery_executor_utils.execute_command[33742386-64d7-4106-b16e-78c1347df3a6] succeeded in 21.015340537000156s: None
+airflow-worker-1  | [2026-09-05 00:50:31,896: INFO/ForkPoolWorker-4] Task airflow.providers.celery.executors.celery_executor_utils.execute_command[b7d4650b-a0f8-4bb5-b77b-b45f8dd08bb1] succeeded in 20.94760312499966s: None
