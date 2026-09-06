@@ -1,6 +1,6 @@
 # NexusData
 
-An end-to-end Data + AI platform — from a live operational database to a governed Azure lakehouse to an AI layer for natural-language insights.
+An end-to-end Data + AI platform from a live operational database to a governed Azure lakehouse to an AI layer for natural-language insights.
 
 ![Data Pipeline Architecture](readme_images/data_pipeline_architecture.png)
 
