@@ -1,10 +1,14 @@
 """
-DataFusion — Extract Neon Postgres tables into Azure Data Lake (raw layer)
+DataFusion — Extract Neon Postgres tables into Azure Data Lake (raw layer),
+then trigger the Databricks medallion job (bronze -> silver -> gold)
 ----------------------------------------------------------------------------
 For each business table, this DAG:
   1. Queries Neon Postgres
   2. Converts result to CSV
   3. Uploads CSV into the "raw" container in ADLS Gen2
+
+Once all extractions succeed, it triggers a single Databricks Job that
+runs bronze_ingestion -> silver_transformation -> gold_aggregation in order.
 
 Schedule: daily
 """
@@ -16,6 +20,7 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.providers.postgres.hooks.postgres import PostgresHook
 from airflow.providers.microsoft.azure.hooks.wasb import WasbHook
+from airflow.providers.databricks.operators.databricks import DatabricksRunNowOperator
 
 TABLES = [
     "customers",
@@ -29,6 +34,8 @@ TABLES = [
 CONTAINER_NAME = "raw"
 POSTGRES_CONN_ID = "neon_postgres"
 AZURE_CONN_ID = "azure_data_lake"
+DATABRICKS_CONN_ID = "databricks_default"
+DATABRICKS_JOB_ID = 300336915146508  # bronze -> silver -> gold, chained in Databricks
 
 default_args = {
     "retries": 3,
@@ -65,18 +72,25 @@ def extract_and_upload(table_name: str, **context):
 
 with DAG(
     dag_id="extract_neon_to_raw",
-    description="Extract Neon Postgres tables and load into ADLS raw layer",
+    description="Extract Neon Postgres tables into ADLS raw layer, then run the Databricks medallion job",
     start_date=datetime(2026, 1, 1),
     schedule_interval="@daily",
     catchup=False,
     default_args=default_args,
     max_active_tasks=3,  # limit parallelism to avoid overwhelming Neon's pooler
-    tags=["datafusion", "ingestion", "raw"],
+    tags=["datafusion", "ingestion", "raw", "bronze", "silver", "gold"],
 ) as dag:
 
+    trigger_medallion_job = DatabricksRunNowOperator(
+        task_id="trigger_medallion_job",
+        databricks_conn_id=DATABRICKS_CONN_ID,
+        job_id=DATABRICKS_JOB_ID,
+    )
+
     for table in TABLES:
-        PythonOperator(
+        extract_task = PythonOperator(
             task_id=f"extract_{table}",
             python_callable=extract_and_upload,
             op_kwargs={"table_name": table},
         )
+        extract_task >> trigger_medallion_job
