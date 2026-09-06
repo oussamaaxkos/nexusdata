@@ -6,12 +6,12 @@ An end-to-end Data + AI platform — from a live operational database to a gover
 
 ## How it works
 
-1. **Neon Postgres** — operational source data (customers, orders, payments, shipments, etc.)
-2. **Apache Airflow** — extracts tables on a schedule and lands them in the `raw` zone
-3. **Azure Data Lake Storage Gen2** — stores data across `raw → bronze → silver → gold` zones
-4. **Azure Databricks + Unity Catalog** — governs the lakehouse and runs Spark transformations
-5. **Power BI** — dashboards and visualization on top of gold
-6. **AI layer** — RAG, text-to-SQL, and agents for natural-language querying of gold data
+1. **Neon Postgres** operational source data (customers, orders, payments, shipments, etc.)
+2. **Apache Airflow** extracts tables on a schedule and lands them in the `raw` zone
+3. **Azure Data Lake Storage Gen2** stores data across `raw → bronze → silver → gold` zones
+4. **Azure Databricks + Unity Catalog** governs the lakehouse and runs Spark transformations
+5. **Power BI** dashboards and visualization on top of gold
+6. **AI layer** RAG, text-to-SQL, and agents for natural-language querying of gold data
 
 ## Status
 
