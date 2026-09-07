@@ -20,9 +20,9 @@ An end-to-end Data + AI platform from a live operational database to a governed 
 - [x] Bronze ingestion (Delta tables, Unity Catalog)
 - [x] Silver cleaning and standardization
 - [x] Gold business-ready aggregates
-- [ ] Automated Airflow → Databricks job triggering
-- [ ] Power BI 
-- [ ] AI layer (RAG, text-to-SQL, agents)
+- [x] Automated Airflow → Databricks job triggering
+- [x] AI layer (RAG, text-to-SQL, agents)
+- [ ] Power BI
 
 ## Tech stack
 
