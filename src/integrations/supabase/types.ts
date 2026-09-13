@@ -14,6 +14,282 @@ export type Database = {
   }
   public: {
     Tables: {
+      agent_runs: {
+        Row: {
+          actor: string
+          actor_role: string
+          approval_required: boolean
+          approval_status: string
+          citations: Json
+          completed_at: string | null
+          confidence: number | null
+          created_at: string
+          documents_retrieved: number
+          entities: Json
+          error: string | null
+          estimated_cost: number
+          eval_run_id: string | null
+          evidence: Json
+          final_response: string | null
+          id: string
+          input_tokens: number
+          intent: string | null
+          latency_ms: number | null
+          model: string | null
+          output_tokens: number
+          plan: Json
+          prompt_version: string | null
+          reasoning_summary: string | null
+          request: string
+          risk_level: string | null
+          run_number: number
+          status: string
+          tool_call_count: number
+          verification_notes: string | null
+          verification_status: string | null
+        }
+        Insert: {
+          actor?: string
+          actor_role?: string
+          approval_required?: boolean
+          approval_status?: string
+          citations?: Json
+          completed_at?: string | null
+          confidence?: number | null
+          created_at?: string
+          documents_retrieved?: number
+          entities?: Json
+          error?: string | null
+          estimated_cost?: number
+          eval_run_id?: string | null
+          evidence?: Json
+          final_response?: string | null
+          id?: string
+          input_tokens?: number
+          intent?: string | null
+          latency_ms?: number | null
+          model?: string | null
+          output_tokens?: number
+          plan?: Json
+          prompt_version?: string | null
+          reasoning_summary?: string | null
+          request: string
+          risk_level?: string | null
+          run_number?: number
+          status?: string
+          tool_call_count?: number
+          verification_notes?: string | null
+          verification_status?: string | null
+        }
+        Update: {
+          actor?: string
+          actor_role?: string
+          approval_required?: boolean
+          approval_status?: string
+          citations?: Json
+          completed_at?: string | null
+          confidence?: number | null
+          created_at?: string
+          documents_retrieved?: number
+          entities?: Json
+          error?: string | null
+          estimated_cost?: number
+          eval_run_id?: string | null
+          evidence?: Json
+          final_response?: string | null
+          id?: string
+          input_tokens?: number
+          intent?: string | null
+          latency_ms?: number | null
+          model?: string | null
+          output_tokens?: number
+          plan?: Json
+          prompt_version?: string | null
+          reasoning_summary?: string | null
+          request?: string
+          risk_level?: string | null
+          run_number?: number
+          status?: string
+          tool_call_count?: number
+          verification_notes?: string | null
+          verification_status?: string | null
+        }
+        Relationships: []
+      }
+      agent_steps: {
+        Row: {
+          created_at: string
+          detail: Json
+          duration_ms: number
+          error: string | null
+          id: string
+          label: string
+          node: string
+          run_id: string
+          started_offset_ms: number
+          status: string
+          step_index: number
+        }
+        Insert: {
+          created_at?: string
+          detail?: Json
+          duration_ms?: number
+          error?: string | null
+          id?: string
+          label: string
+          node: string
+          run_id: string
+          started_offset_ms?: number
+          status?: string
+          step_index: number
+        }
+        Update: {
+          created_at?: string
+          detail?: Json
+          duration_ms?: number
+          error?: string | null
+          id?: string
+          label?: string
+          node?: string
+          run_id?: string
+          started_offset_ms?: number
+          status?: string
+          step_index?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "agent_steps_run_id_fkey"
+            columns: ["run_id"]
+            isOneToOne: false
+            referencedRelation: "agent_runs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      approvals: {
+        Row: {
+          action_payload: Json
+          action_type: string
+          amount: number | null
+          currency: string | null
+          decided_at: string | null
+          decided_by: string | null
+          decision_note: string | null
+          evidence: Json
+          id: string
+          justification: string | null
+          requested_at: string
+          risk_level: string
+          run_id: string
+          status: string
+          summary: string
+        }
+        Insert: {
+          action_payload?: Json
+          action_type: string
+          amount?: number | null
+          currency?: string | null
+          decided_at?: string | null
+          decided_by?: string | null
+          decision_note?: string | null
+          evidence?: Json
+          id?: string
+          justification?: string | null
+          requested_at?: string
+          risk_level?: string
+          run_id: string
+          status?: string
+          summary: string
+        }
+        Update: {
+          action_payload?: Json
+          action_type?: string
+          amount?: number | null
+          currency?: string | null
+          decided_at?: string | null
+          decided_by?: string | null
+          decision_note?: string | null
+          evidence?: Json
+          id?: string
+          justification?: string | null
+          requested_at?: string
+          risk_level?: string
+          run_id?: string
+          status?: string
+          summary?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "approvals_run_id_fkey"
+            columns: ["run_id"]
+            isOneToOne: false
+            referencedRelation: "agent_runs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      audit_logs: {
+        Row: {
+          action: string | null
+          actor: string
+          actor_role: string
+          agent: string | null
+          created_at: string
+          event_type: string
+          id: string
+          latency_ms: number | null
+          metadata: Json
+          model: string | null
+          prompt_version: string | null
+          risk_level: string | null
+          run_id: string | null
+          status: string
+          tool: string | null
+        }
+        Insert: {
+          action?: string | null
+          actor?: string
+          actor_role?: string
+          agent?: string | null
+          created_at?: string
+          event_type: string
+          id?: string
+          latency_ms?: number | null
+          metadata?: Json
+          model?: string | null
+          prompt_version?: string | null
+          risk_level?: string | null
+          run_id?: string | null
+          status?: string
+          tool?: string | null
+        }
+        Update: {
+          action?: string | null
+          actor?: string
+          actor_role?: string
+          agent?: string | null
+          created_at?: string
+          event_type?: string
+          id?: string
+          latency_ms?: number | null
+          metadata?: Json
+          model?: string | null
+          prompt_version?: string | null
+          risk_level?: string | null
+          run_id?: string | null
+          status?: string
+          tool?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "audit_logs_run_id_fkey"
+            columns: ["run_id"]
+            isOneToOne: false
+            referencedRelation: "agent_runs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       companies: {
         Row: {
           country: string
@@ -88,6 +364,92 @@ export type Database = {
           },
         ]
       }
+      document_chunks: {
+        Row: {
+          chunk_index: number
+          content: string
+          document_id: string
+          id: string
+          search_vector: unknown
+          section: string
+          token_estimate: number
+        }
+        Insert: {
+          chunk_index: number
+          content: string
+          document_id: string
+          id?: string
+          search_vector?: unknown
+          section: string
+          token_estimate?: number
+        }
+        Update: {
+          chunk_index?: number
+          content?: string
+          document_id?: string
+          id?: string
+          search_vector?: unknown
+          section?: string
+          token_estimate?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "document_chunks_document_id_fkey"
+            columns: ["document_id"]
+            isOneToOne: false
+            referencedRelation: "documents"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      documents: {
+        Row: {
+          author: string
+          chunk_count: number
+          created_at: string
+          department: string
+          document_type: string
+          effective_date: string
+          expiration_date: string | null
+          id: string
+          source_format: string
+          status: string
+          tags: string[]
+          title: string
+          version: string
+        }
+        Insert: {
+          author: string
+          chunk_count?: number
+          created_at?: string
+          department: string
+          document_type: string
+          effective_date?: string
+          expiration_date?: string | null
+          id?: string
+          source_format?: string
+          status?: string
+          tags?: string[]
+          title: string
+          version?: string
+        }
+        Update: {
+          author?: string
+          chunk_count?: number
+          created_at?: string
+          department?: string
+          document_type?: string
+          effective_date?: string
+          expiration_date?: string | null
+          id?: string
+          source_format?: string
+          status?: string
+          tags?: string[]
+          title?: string
+          version?: string
+        }
+        Relationships: []
+      }
       employees: {
         Row: {
           created_at: string
@@ -112,6 +474,193 @@ export type Database = {
           full_name?: string
           id?: string
           role?: string
+        }
+        Relationships: []
+      }
+      evaluation_cases: {
+        Row: {
+          active: boolean
+          case_code: string
+          category: string
+          created_at: string
+          expected_intent: string
+          expected_result: string
+          expected_tools: string[]
+          id: string
+          input: string
+          required_evidence: string[]
+          risk_level: string
+        }
+        Insert: {
+          active?: boolean
+          case_code: string
+          category: string
+          created_at?: string
+          expected_intent: string
+          expected_result: string
+          expected_tools?: string[]
+          id?: string
+          input: string
+          required_evidence?: string[]
+          risk_level?: string
+        }
+        Update: {
+          active?: boolean
+          case_code?: string
+          category?: string
+          created_at?: string
+          expected_intent?: string
+          expected_result?: string
+          expected_tools?: string[]
+          id?: string
+          input?: string
+          required_evidence?: string[]
+          risk_level?: string
+        }
+        Relationships: []
+      }
+      evaluation_results: {
+        Row: {
+          case_id: string
+          citation_score: number
+          created_at: string
+          eval_run_id: string
+          groundedness_score: number
+          id: string
+          intent_match: boolean
+          latency_ms: number | null
+          notes: string | null
+          passed: boolean
+          run_id: string | null
+          tool_match_score: number
+        }
+        Insert: {
+          case_id: string
+          citation_score?: number
+          created_at?: string
+          eval_run_id: string
+          groundedness_score?: number
+          id?: string
+          intent_match?: boolean
+          latency_ms?: number | null
+          notes?: string | null
+          passed?: boolean
+          run_id?: string | null
+          tool_match_score?: number
+        }
+        Update: {
+          case_id?: string
+          citation_score?: number
+          created_at?: string
+          eval_run_id?: string
+          groundedness_score?: number
+          id?: string
+          intent_match?: boolean
+          latency_ms?: number | null
+          notes?: string | null
+          passed?: boolean
+          run_id?: string | null
+          tool_match_score?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "evaluation_results_case_id_fkey"
+            columns: ["case_id"]
+            isOneToOne: false
+            referencedRelation: "evaluation_cases"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "evaluation_results_eval_run_id_fkey"
+            columns: ["eval_run_id"]
+            isOneToOne: false
+            referencedRelation: "evaluation_runs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "evaluation_results_run_id_fkey"
+            columns: ["run_id"]
+            isOneToOne: false
+            referencedRelation: "agent_runs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      evaluation_runs: {
+        Row: {
+          avg_latency_ms: number | null
+          case_count: number
+          citation_accuracy: number | null
+          completed_at: string | null
+          created_at: string
+          estimated_cost: number
+          failed: number
+          failure_recovery_rate: number | null
+          groundedness: number | null
+          id: string
+          label: string
+          model: string
+          mrr: number | null
+          p95_latency_ms: number | null
+          passed: number
+          precision_at_5: number | null
+          prompt_version: string
+          recall_at_5: number | null
+          status: string
+          task_success_rate: number | null
+          tool_accuracy: number | null
+          total_tokens: number
+          unnecessary_tool_rate: number | null
+        }
+        Insert: {
+          avg_latency_ms?: number | null
+          case_count?: number
+          citation_accuracy?: number | null
+          completed_at?: string | null
+          created_at?: string
+          estimated_cost?: number
+          failed?: number
+          failure_recovery_rate?: number | null
+          groundedness?: number | null
+          id?: string
+          label: string
+          model: string
+          mrr?: number | null
+          p95_latency_ms?: number | null
+          passed?: number
+          precision_at_5?: number | null
+          prompt_version: string
+          recall_at_5?: number | null
+          status?: string
+          task_success_rate?: number | null
+          tool_accuracy?: number | null
+          total_tokens?: number
+          unnecessary_tool_rate?: number | null
+        }
+        Update: {
+          avg_latency_ms?: number | null
+          case_count?: number
+          citation_accuracy?: number | null
+          completed_at?: string | null
+          created_at?: string
+          estimated_cost?: number
+          failed?: number
+          failure_recovery_rate?: number | null
+          groundedness?: number | null
+          id?: string
+          label?: string
+          model?: string
+          mrr?: number | null
+          p95_latency_ms?: number | null
+          passed?: number
+          precision_at_5?: number | null
+          prompt_version?: string
+          recall_at_5?: number | null
+          status?: string
+          task_success_rate?: number | null
+          tool_accuracy?: number | null
+          total_tokens?: number
+          unnecessary_tool_rate?: number | null
         }
         Relationships: []
       }
@@ -168,6 +717,54 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      model_configs: {
+        Row: {
+          available: boolean
+          created_at: string
+          display_name: string
+          id: string
+          input_cost_per_1k: number
+          is_active: boolean
+          max_output_tokens: number
+          model_id: string
+          notes: string | null
+          output_cost_per_1k: number
+          provider: string
+          role: string
+          temperature: number
+        }
+        Insert: {
+          available?: boolean
+          created_at?: string
+          display_name: string
+          id?: string
+          input_cost_per_1k?: number
+          is_active?: boolean
+          max_output_tokens?: number
+          model_id: string
+          notes?: string | null
+          output_cost_per_1k?: number
+          provider: string
+          role?: string
+          temperature?: number
+        }
+        Update: {
+          available?: boolean
+          created_at?: string
+          display_name?: string
+          id?: string
+          input_cost_per_1k?: number
+          is_active?: boolean
+          max_output_tokens?: number
+          model_id?: string
+          notes?: string | null
+          output_cost_per_1k?: number
+          provider?: string
+          role?: string
+          temperature?: number
+        }
+        Relationships: []
       }
       order_items: {
         Row: {
@@ -336,6 +933,42 @@ export type Database = {
         }
         Relationships: []
       }
+      prompt_versions: {
+        Row: {
+          author: string
+          content: string
+          created_at: string
+          description: string | null
+          id: string
+          is_active: boolean
+          name: string
+          success_score: number | null
+          version: string
+        }
+        Insert: {
+          author?: string
+          content: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_active?: boolean
+          name: string
+          success_score?: number | null
+          version: string
+        }
+        Update: {
+          author?: string
+          content?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_active?: boolean
+          name?: string
+          success_score?: number | null
+          version?: string
+        }
+        Relationships: []
+      }
       shipments: {
         Row: {
           carrier: string
@@ -445,6 +1078,98 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      tool_calls: {
+        Row: {
+          created_at: string
+          duration_ms: number
+          error: string | null
+          id: string
+          input: Json
+          output: Json
+          permission_level: string
+          risk_level: string
+          run_id: string
+          status: string
+          tool_name: string
+        }
+        Insert: {
+          created_at?: string
+          duration_ms?: number
+          error?: string | null
+          id?: string
+          input?: Json
+          output?: Json
+          permission_level?: string
+          risk_level?: string
+          run_id: string
+          status?: string
+          tool_name: string
+        }
+        Update: {
+          created_at?: string
+          duration_ms?: number
+          error?: string | null
+          id?: string
+          input?: Json
+          output?: Json
+          permission_level?: string
+          risk_level?: string
+          run_id?: string
+          status?: string
+          tool_name?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tool_calls_run_id_fkey"
+            columns: ["run_id"]
+            isOneToOne: false
+            referencedRelation: "agent_runs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      tool_registry: {
+        Row: {
+          category: string
+          created_at: string
+          description: string
+          enabled: boolean
+          id: string
+          input_schema: Json
+          mcp_exposed: boolean
+          name: string
+          output_schema: Json
+          permission_level: string
+          risk_level: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          description: string
+          enabled?: boolean
+          id?: string
+          input_schema?: Json
+          mcp_exposed?: boolean
+          name: string
+          output_schema?: Json
+          permission_level?: string
+          risk_level?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          description?: string
+          enabled?: boolean
+          id?: string
+          input_schema?: Json
+          mcp_exposed?: boolean
+          name?: string
+          output_schema?: Json
+          permission_level?: string
+          risk_level?: string
+        }
+        Relationships: []
       }
     }
     Views: {
