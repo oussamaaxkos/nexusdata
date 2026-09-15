@@ -10,33 +10,150 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApprovalsRouteImport } from './routes/approvals'
+import { Route as CopilotRouteImport } from './routes/copilot'
+import { Route as CustomersRouteImport } from './routes/customers'
+import { Route as IngestionRouteImport } from './routes/ingestion'
+import { Route as KnowledgeRouteImport } from './routes/knowledge'
+import { Route as OrdersRouteImport } from './routes/orders'
+import { Route as RunsRouteImport } from './routes/runs'
+import { Route as RunsIndexRouteImport } from './routes/runs.index'
+import { Route as RunsRunIdRouteImport } from './routes/runs.$runId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApprovalsRoute = ApprovalsRouteImport.update({
+  id: '/approvals',
+  path: '/approvals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CopilotRoute = CopilotRouteImport.update({
+  id: '/copilot',
+  path: '/copilot',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomersRoute = CustomersRouteImport.update({
+  id: '/customers',
+  path: '/customers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IngestionRoute = IngestionRouteImport.update({
+  id: '/ingestion',
+  path: '/ingestion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KnowledgeRoute = KnowledgeRouteImport.update({
+  id: '/knowledge',
+  path: '/knowledge',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OrdersRoute = OrdersRouteImport.update({
+  id: '/orders',
+  path: '/orders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RunsRoute = RunsRouteImport.update({
+  id: '/runs',
+  path: '/runs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RunsIndexRoute = RunsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => RunsRoute,
+} as any)
+const RunsRunIdRoute = RunsRunIdRouteImport.update({
+  id: '/$runId',
+  path: '/$runId',
+  getParentRoute: () => RunsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/approvals': typeof ApprovalsRoute
+  '/copilot': typeof CopilotRoute
+  '/customers': typeof CustomersRoute
+  '/ingestion': typeof IngestionRoute
+  '/knowledge': typeof KnowledgeRoute
+  '/orders': typeof OrdersRoute
+  '/runs': typeof RunsRouteWithChildren
+  '/runs/$runId': typeof RunsRunIdRoute
+  '/runs/': typeof RunsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/approvals': typeof ApprovalsRoute
+  '/copilot': typeof CopilotRoute
+  '/customers': typeof CustomersRoute
+  '/ingestion': typeof IngestionRoute
+  '/knowledge': typeof KnowledgeRoute
+  '/orders': typeof OrdersRoute
+  '/runs/$runId': typeof RunsRunIdRoute
+  '/runs': typeof RunsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/approvals': typeof ApprovalsRoute
+  '/copilot': typeof CopilotRoute
+  '/customers': typeof CustomersRoute
+  '/ingestion': typeof IngestionRoute
+  '/knowledge': typeof KnowledgeRoute
+  '/orders': typeof OrdersRoute
+  '/runs': typeof RunsRouteWithChildren
+  '/runs/$runId': typeof RunsRunIdRoute
+  '/runs/': typeof RunsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/approvals'
+    | '/copilot'
+    | '/customers'
+    | '/ingestion'
+    | '/knowledge'
+    | '/orders'
+    | '/runs'
+    | '/runs/$runId'
+    | '/runs/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/approvals'
+    | '/copilot'
+    | '/customers'
+    | '/ingestion'
+    | '/knowledge'
+    | '/orders'
+    | '/runs/$runId'
+    | '/runs'
+  id:
+    | '__root__'
+    | '/'
+    | '/approvals'
+    | '/copilot'
+    | '/customers'
+    | '/ingestion'
+    | '/knowledge'
+    | '/orders'
+    | '/runs'
+    | '/runs/$runId'
+    | '/runs/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApprovalsRoute: typeof ApprovalsRoute
+  CopilotRoute: typeof CopilotRoute
+  CustomersRoute: typeof CustomersRoute
+  IngestionRoute: typeof IngestionRoute
+  KnowledgeRoute: typeof KnowledgeRoute
+  OrdersRoute: typeof OrdersRoute
+  RunsRoute: typeof RunsRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +165,93 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/approvals': {
+      id: '/approvals'
+      path: '/approvals'
+      fullPath: '/approvals'
+      preLoaderRoute: typeof ApprovalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/copilot': {
+      id: '/copilot'
+      path: '/copilot'
+      fullPath: '/copilot'
+      preLoaderRoute: typeof CopilotRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customers': {
+      id: '/customers'
+      path: '/customers'
+      fullPath: '/customers'
+      preLoaderRoute: typeof CustomersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ingestion': {
+      id: '/ingestion'
+      path: '/ingestion'
+      fullPath: '/ingestion'
+      preLoaderRoute: typeof IngestionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/knowledge': {
+      id: '/knowledge'
+      path: '/knowledge'
+      fullPath: '/knowledge'
+      preLoaderRoute: typeof KnowledgeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/orders': {
+      id: '/orders'
+      path: '/orders'
+      fullPath: '/orders'
+      preLoaderRoute: typeof OrdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/runs': {
+      id: '/runs'
+      path: '/runs'
+      fullPath: '/runs'
+      preLoaderRoute: typeof RunsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/runs/': {
+      id: '/runs/'
+      path: '/'
+      fullPath: '/runs/'
+      preLoaderRoute: typeof RunsIndexRouteImport
+      parentRoute: typeof RunsRoute
+    }
+    '/runs/$runId': {
+      id: '/runs/$runId'
+      path: '/$runId'
+      fullPath: '/runs/$runId'
+      preLoaderRoute: typeof RunsRunIdRouteImport
+      parentRoute: typeof RunsRoute
+    }
   }
 }
 
+interface RunsRouteChildren {
+  RunsRunIdRoute: typeof RunsRunIdRoute
+  RunsIndexRoute: typeof RunsIndexRoute
+}
+
+const RunsRouteChildren: RunsRouteChildren = {
+  RunsRunIdRoute: RunsRunIdRoute,
+  RunsIndexRoute: RunsIndexRoute,
+}
+
+const RunsRouteWithChildren = RunsRoute._addFileChildren(RunsRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApprovalsRoute: ApprovalsRoute,
+  CopilotRoute: CopilotRoute,
+  CustomersRoute: CustomersRoute,
+  IngestionRoute: IngestionRoute,
+  KnowledgeRoute: KnowledgeRoute,
+  OrdersRoute: OrdersRoute,
+  RunsRoute: RunsRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
