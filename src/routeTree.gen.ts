@@ -13,6 +13,8 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApprovalsRouteImport } from './routes/approvals'
 import { Route as CopilotRouteImport } from './routes/copilot'
 import { Route as CustomersRouteImport } from './routes/customers'
+import { Route as IngestionRouteImport } from './routes/ingestion'
+import { Route as KnowledgeRouteImport } from './routes/knowledge'
 import { Route as OrdersRouteImport } from './routes/orders'
 import { Route as RunsRouteImport } from './routes/runs'
 import { Route as RunsIndexRouteImport } from './routes/runs.index'
@@ -36,6 +38,16 @@ const CopilotRoute = CopilotRouteImport.update({
 const CustomersRoute = CustomersRouteImport.update({
   id: '/customers',
   path: '/customers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IngestionRoute = IngestionRouteImport.update({
+  id: '/ingestion',
+  path: '/ingestion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KnowledgeRoute = KnowledgeRouteImport.update({
+  id: '/knowledge',
+  path: '/knowledge',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OrdersRoute = OrdersRouteImport.update({
@@ -64,6 +76,8 @@ export interface FileRoutesByFullPath {
   '/approvals': typeof ApprovalsRoute
   '/copilot': typeof CopilotRoute
   '/customers': typeof CustomersRoute
+  '/ingestion': typeof IngestionRoute
+  '/knowledge': typeof KnowledgeRoute
   '/orders': typeof OrdersRoute
   '/runs': typeof RunsRouteWithChildren
   '/runs/$runId': typeof RunsRunIdRoute
@@ -74,6 +88,8 @@ export interface FileRoutesByTo {
   '/approvals': typeof ApprovalsRoute
   '/copilot': typeof CopilotRoute
   '/customers': typeof CustomersRoute
+  '/ingestion': typeof IngestionRoute
+  '/knowledge': typeof KnowledgeRoute
   '/orders': typeof OrdersRoute
   '/runs/$runId': typeof RunsRunIdRoute
   '/runs': typeof RunsIndexRoute
@@ -84,6 +100,8 @@ export interface FileRoutesById {
   '/approvals': typeof ApprovalsRoute
   '/copilot': typeof CopilotRoute
   '/customers': typeof CustomersRoute
+  '/ingestion': typeof IngestionRoute
+  '/knowledge': typeof KnowledgeRoute
   '/orders': typeof OrdersRoute
   '/runs': typeof RunsRouteWithChildren
   '/runs/$runId': typeof RunsRunIdRoute
@@ -96,6 +114,8 @@ export interface FileRouteTypes {
     | '/approvals'
     | '/copilot'
     | '/customers'
+    | '/ingestion'
+    | '/knowledge'
     | '/orders'
     | '/runs'
     | '/runs/$runId'
@@ -106,6 +126,8 @@ export interface FileRouteTypes {
     | '/approvals'
     | '/copilot'
     | '/customers'
+    | '/ingestion'
+    | '/knowledge'
     | '/orders'
     | '/runs/$runId'
     | '/runs'
@@ -115,6 +137,8 @@ export interface FileRouteTypes {
     | '/approvals'
     | '/copilot'
     | '/customers'
+    | '/ingestion'
+    | '/knowledge'
     | '/orders'
     | '/runs'
     | '/runs/$runId'
@@ -126,6 +150,8 @@ export interface RootRouteChildren {
   ApprovalsRoute: typeof ApprovalsRoute
   CopilotRoute: typeof CopilotRoute
   CustomersRoute: typeof CustomersRoute
+  IngestionRoute: typeof IngestionRoute
+  KnowledgeRoute: typeof KnowledgeRoute
   OrdersRoute: typeof OrdersRoute
   RunsRoute: typeof RunsRouteWithChildren
 }
@@ -158,6 +184,20 @@ declare module '@tanstack/react-router' {
       path: '/customers'
       fullPath: '/customers'
       preLoaderRoute: typeof CustomersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ingestion': {
+      id: '/ingestion'
+      path: '/ingestion'
+      fullPath: '/ingestion'
+      preLoaderRoute: typeof IngestionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/knowledge': {
+      id: '/knowledge'
+      path: '/knowledge'
+      fullPath: '/knowledge'
+      preLoaderRoute: typeof KnowledgeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/orders': {
@@ -208,6 +248,8 @@ const rootRouteChildren: RootRouteChildren = {
   ApprovalsRoute: ApprovalsRoute,
   CopilotRoute: CopilotRoute,
   CustomersRoute: CustomersRoute,
+  IngestionRoute: IngestionRoute,
+  KnowledgeRoute: KnowledgeRoute,
   OrdersRoute: OrdersRoute,
   RunsRoute: RunsRouteWithChildren,
 }
