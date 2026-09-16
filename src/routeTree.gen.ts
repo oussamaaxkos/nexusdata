@@ -11,15 +11,19 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApprovalsRouteImport } from './routes/approvals'
+import { Route as AuditRouteImport } from './routes/audit'
 import { Route as CopilotRouteImport } from './routes/copilot'
 import { Route as CustomersRouteImport } from './routes/customers'
 import { Route as EvaluationRouteImport } from './routes/evaluation'
 import { Route as IngestionRouteImport } from './routes/ingestion'
 import { Route as KnowledgeRouteImport } from './routes/knowledge'
+import { Route as ModelsRouteImport } from './routes/models'
 import { Route as ObservabilityRouteImport } from './routes/observability'
 import { Route as OrdersRouteImport } from './routes/orders'
 import { Route as PromptsRouteImport } from './routes/prompts'
 import { Route as RunsRouteImport } from './routes/runs'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as ToolsRouteImport } from './routes/tools'
 import { Route as RunsIndexRouteImport } from './routes/runs.index'
 import { Route as RunsRunIdRouteImport } from './routes/runs.$runId'
 
@@ -31,6 +35,11 @@ const IndexRoute = IndexRouteImport.update({
 const ApprovalsRoute = ApprovalsRouteImport.update({
   id: '/approvals',
   path: '/approvals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuditRoute = AuditRouteImport.update({
+  id: '/audit',
+  path: '/audit',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CopilotRoute = CopilotRouteImport.update({
@@ -58,6 +67,11 @@ const KnowledgeRoute = KnowledgeRouteImport.update({
   path: '/knowledge',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ModelsRoute = ModelsRouteImport.update({
+  id: '/models',
+  path: '/models',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ObservabilityRoute = ObservabilityRouteImport.update({
   id: '/observability',
   path: '/observability',
@@ -78,6 +92,16 @@ const RunsRoute = RunsRouteImport.update({
   path: '/runs',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsRoute = ToolsRouteImport.update({
+  id: '/tools',
+  path: '/tools',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RunsIndexRoute = RunsIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -92,29 +116,37 @@ const RunsRunIdRoute = RunsRunIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/approvals': typeof ApprovalsRoute
+  '/audit': typeof AuditRoute
   '/copilot': typeof CopilotRoute
   '/customers': typeof CustomersRoute
   '/evaluation': typeof EvaluationRoute
   '/ingestion': typeof IngestionRoute
   '/knowledge': typeof KnowledgeRoute
+  '/models': typeof ModelsRoute
   '/observability': typeof ObservabilityRoute
   '/orders': typeof OrdersRoute
   '/prompts': typeof PromptsRoute
   '/runs': typeof RunsRouteWithChildren
+  '/settings': typeof SettingsRoute
+  '/tools': typeof ToolsRoute
   '/runs/$runId': typeof RunsRunIdRoute
   '/runs/': typeof RunsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/approvals': typeof ApprovalsRoute
+  '/audit': typeof AuditRoute
   '/copilot': typeof CopilotRoute
   '/customers': typeof CustomersRoute
   '/evaluation': typeof EvaluationRoute
   '/ingestion': typeof IngestionRoute
   '/knowledge': typeof KnowledgeRoute
+  '/models': typeof ModelsRoute
   '/observability': typeof ObservabilityRoute
   '/orders': typeof OrdersRoute
   '/prompts': typeof PromptsRoute
+  '/settings': typeof SettingsRoute
+  '/tools': typeof ToolsRoute
   '/runs/$runId': typeof RunsRunIdRoute
   '/runs': typeof RunsIndexRoute
 }
@@ -122,15 +154,19 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/approvals': typeof ApprovalsRoute
+  '/audit': typeof AuditRoute
   '/copilot': typeof CopilotRoute
   '/customers': typeof CustomersRoute
   '/evaluation': typeof EvaluationRoute
   '/ingestion': typeof IngestionRoute
   '/knowledge': typeof KnowledgeRoute
+  '/models': typeof ModelsRoute
   '/observability': typeof ObservabilityRoute
   '/orders': typeof OrdersRoute
   '/prompts': typeof PromptsRoute
   '/runs': typeof RunsRouteWithChildren
+  '/settings': typeof SettingsRoute
+  '/tools': typeof ToolsRoute
   '/runs/$runId': typeof RunsRunIdRoute
   '/runs/': typeof RunsIndexRoute
 }
@@ -139,44 +175,56 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/approvals'
+    | '/audit'
     | '/copilot'
     | '/customers'
     | '/evaluation'
     | '/ingestion'
     | '/knowledge'
+    | '/models'
     | '/observability'
     | '/orders'
     | '/prompts'
     | '/runs'
+    | '/settings'
+    | '/tools'
     | '/runs/$runId'
     | '/runs/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/approvals'
+    | '/audit'
     | '/copilot'
     | '/customers'
     | '/evaluation'
     | '/ingestion'
     | '/knowledge'
+    | '/models'
     | '/observability'
     | '/orders'
     | '/prompts'
+    | '/settings'
+    | '/tools'
     | '/runs/$runId'
     | '/runs'
   id:
     | '__root__'
     | '/'
     | '/approvals'
+    | '/audit'
     | '/copilot'
     | '/customers'
     | '/evaluation'
     | '/ingestion'
     | '/knowledge'
+    | '/models'
     | '/observability'
     | '/orders'
     | '/prompts'
     | '/runs'
+    | '/settings'
+    | '/tools'
     | '/runs/$runId'
     | '/runs/'
   fileRoutesById: FileRoutesById
@@ -184,15 +232,19 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ApprovalsRoute: typeof ApprovalsRoute
+  AuditRoute: typeof AuditRoute
   CopilotRoute: typeof CopilotRoute
   CustomersRoute: typeof CustomersRoute
   EvaluationRoute: typeof EvaluationRoute
   IngestionRoute: typeof IngestionRoute
   KnowledgeRoute: typeof KnowledgeRoute
+  ModelsRoute: typeof ModelsRoute
   ObservabilityRoute: typeof ObservabilityRoute
   OrdersRoute: typeof OrdersRoute
   PromptsRoute: typeof PromptsRoute
   RunsRoute: typeof RunsRouteWithChildren
+  SettingsRoute: typeof SettingsRoute
+  ToolsRoute: typeof ToolsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -209,6 +261,13 @@ declare module '@tanstack/react-router' {
       path: '/approvals'
       fullPath: '/approvals'
       preLoaderRoute: typeof ApprovalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/audit': {
+      id: '/audit'
+      path: '/audit'
+      fullPath: '/audit'
+      preLoaderRoute: typeof AuditRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/copilot': {
@@ -246,6 +305,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KnowledgeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/models': {
+      id: '/models'
+      path: '/models'
+      fullPath: '/models'
+      preLoaderRoute: typeof ModelsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/observability': {
       id: '/observability'
       path: '/observability'
@@ -272,6 +338,20 @@ declare module '@tanstack/react-router' {
       path: '/runs'
       fullPath: '/runs'
       preLoaderRoute: typeof RunsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools': {
+      id: '/tools'
+      path: '/tools'
+      fullPath: '/tools'
+      preLoaderRoute: typeof ToolsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/runs/': {
@@ -306,15 +386,19 @@ const RunsRouteWithChildren = RunsRoute._addFileChildren(RunsRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ApprovalsRoute: ApprovalsRoute,
+  AuditRoute: AuditRoute,
   CopilotRoute: CopilotRoute,
   CustomersRoute: CustomersRoute,
   EvaluationRoute: EvaluationRoute,
   IngestionRoute: IngestionRoute,
   KnowledgeRoute: KnowledgeRoute,
+  ModelsRoute: ModelsRoute,
   ObservabilityRoute: ObservabilityRoute,
   OrdersRoute: OrdersRoute,
   PromptsRoute: PromptsRoute,
   RunsRoute: RunsRouteWithChildren,
+  SettingsRoute: SettingsRoute,
+  ToolsRoute: ToolsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
