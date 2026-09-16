@@ -134,7 +134,7 @@ export async function runAgent(input: RunAgentInput) {
     if (steps.length) {
       await supabaseAdmin
         .from("agent_steps")
-        .insert(steps.map((s, i) => ({ run_id: run.id, step_index: i, ...s })));
+        .insert(steps.map((s, i) => ({ run_id: run.id, step_index: i, ...s, detail: s.detail as any })));
     }
     if (toolCallRows.length) {
       await supabaseAdmin.from("tool_calls").insert(toolCallRows.map((t) => ({ run_id: run.id, ...t })));
@@ -445,7 +445,7 @@ ${OUTPUT_CONTRACT}`,
           justification: a.justification,
           evidence: citations as unknown as any,
           risk_level: a.risk_level,
-          amount: a.amount,
+          amount: a.amount ?? null,
           status: "pending",
         }));
       if (rows.length) await supabaseAdmin.from("approvals").insert(rows);
