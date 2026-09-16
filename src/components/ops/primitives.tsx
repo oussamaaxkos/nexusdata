@@ -34,7 +34,7 @@ export function RiskBadge({ risk }: { risk?: string | null }) {
     <span
       className={cn(
         "inline-flex items-center rounded-full border px-2 py-0.5 font-mono text-[11px] font-medium uppercase tracking-wide",
-        riskStyles[key] ?? riskStyles.LOW,
+        riskStyles[key] ?? riskStyles['LOW'],
       )}
     >
       {key}

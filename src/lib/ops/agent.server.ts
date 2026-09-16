@@ -134,7 +134,7 @@ export async function runAgent(input: RunAgentInput) {
     if (steps.length) {
       await supabaseAdmin
         .from("agent_steps")
-        .insert(steps.map((s, i) => ({ run_id: run.id, step_index: i, ...s })));
+        .insert(steps.map((s, i) => ({ run_id: run.id, step_index: i, ...s, detail: s.detail as any })));
     }
     if (toolCallRows.length) {
       await supabaseAdmin.from("tool_calls").insert(toolCallRows.map((t) => ({ run_id: run.id, ...t })));

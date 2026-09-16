@@ -74,8 +74,8 @@ function ModelsPage() {
                 <dd className="mt-0.5 font-medium">{m.provider}</dd>
               </div>
               <div className="rounded-md border border-border bg-surface-2 px-2 py-1.5">
-                <dt className="text-[10px] uppercase tracking-wider text-muted-foreground">Context</dt>
-                <dd className="tabular mt-0.5 font-medium">{(m.context_window ?? 0).toLocaleString()}</dd>
+                <dt className="text-[10px] uppercase tracking-wider text-muted-foreground">Role</dt>
+                <dd className="mt-0.5 font-medium capitalize">{m.role}</dd>
               </div>
               <div className="rounded-md border border-border bg-surface-2 px-2 py-1.5">
                 <dt className="text-[10px] uppercase tracking-wider text-muted-foreground">Temperature</dt>

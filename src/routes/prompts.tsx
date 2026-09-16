@@ -59,7 +59,7 @@ function PromptsPage() {
                   <tr key={p.id} className="border-b border-border/60 last:border-0 hover:bg-accent/40">
                     <td className="py-2 pr-3">{p.name}</td>
                     <td className="py-2 pr-3 font-mono text-xs text-primary">{p.version}</td>
-                    <td className="max-w-md truncate py-2 pr-3 text-xs text-muted-foreground">{p.changelog}</td>
+                    <td className="max-w-md truncate py-2 pr-3 text-xs text-muted-foreground">{p.description}</td>
                     <td className="py-2 pr-3 text-xs text-muted-foreground">{fmtDate(p.created_at)}</td>
                     <td className="py-2">
                       {p.is_active ? (
@@ -117,7 +117,7 @@ function PromptsPage() {
           >
             {prompt ? (
               <>
-                <p className="mb-2 text-xs text-muted-foreground">{prompt.changelog}</p>
+                <p className="mb-2 text-xs text-muted-foreground">{prompt.description}</p>
                 <pre className="max-h-[420px] overflow-auto whitespace-pre-wrap rounded-md bg-surface-2 p-3 font-mono text-[11px] leading-relaxed">
                   {prompt.content}
                 </pre>

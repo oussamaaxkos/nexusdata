@@ -163,12 +163,12 @@ function EvaluationPage() {
           <Panel title={active?.label ?? "Results"} description={active ? `${active.model} · prompt ${active.prompt_version}` : undefined}>
             {active ? (
               <div className="grid gap-2 sm:grid-cols-3 xl:grid-cols-6">
-                <Metric label="Pass rate" value={`${Number(active.pass_rate ?? 0).toFixed(0)}%`} />
-                <Metric label="Intent accuracy" value={`${Number(active.intent_accuracy ?? 0).toFixed(0)}%`} />
+                <Metric label="Pass rate" value={`${Number(active.task_success_rate ?? 0).toFixed(0)}%`} />
+                <Metric label="Recall@5" value={`${Number(active.recall_at_5 ?? 0).toFixed(0)}%`} />
                 <Metric label="Tool accuracy" value={`${Number(active.tool_accuracy ?? 0).toFixed(0)}%`} />
                 <Metric label="Groundedness" value={`${Number(active.groundedness ?? 0).toFixed(0)}%`} />
                 <Metric label="Avg latency" value={`${fmtNumber(active.avg_latency_ms)} ms`} />
-                <Metric label="Total cost" value={`$${Number(active.total_cost ?? 0).toFixed(4)}`} />
+                <Metric label="Total cost" value={`$${Number(active.estimated_cost ?? 0).toFixed(4)}`} />
               </div>
             ) : (
               <EmptyState title="Select a benchmark" />
