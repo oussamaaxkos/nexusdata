@@ -13,9 +13,12 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApprovalsRouteImport } from './routes/approvals'
 import { Route as CopilotRouteImport } from './routes/copilot'
 import { Route as CustomersRouteImport } from './routes/customers'
+import { Route as EvaluationRouteImport } from './routes/evaluation'
 import { Route as IngestionRouteImport } from './routes/ingestion'
 import { Route as KnowledgeRouteImport } from './routes/knowledge'
+import { Route as ObservabilityRouteImport } from './routes/observability'
 import { Route as OrdersRouteImport } from './routes/orders'
+import { Route as PromptsRouteImport } from './routes/prompts'
 import { Route as RunsRouteImport } from './routes/runs'
 import { Route as RunsIndexRouteImport } from './routes/runs.index'
 import { Route as RunsRunIdRouteImport } from './routes/runs.$runId'
@@ -40,6 +43,11 @@ const CustomersRoute = CustomersRouteImport.update({
   path: '/customers',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EvaluationRoute = EvaluationRouteImport.update({
+  id: '/evaluation',
+  path: '/evaluation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IngestionRoute = IngestionRouteImport.update({
   id: '/ingestion',
   path: '/ingestion',
@@ -50,9 +58,19 @@ const KnowledgeRoute = KnowledgeRouteImport.update({
   path: '/knowledge',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ObservabilityRoute = ObservabilityRouteImport.update({
+  id: '/observability',
+  path: '/observability',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OrdersRoute = OrdersRouteImport.update({
   id: '/orders',
   path: '/orders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PromptsRoute = PromptsRouteImport.update({
+  id: '/prompts',
+  path: '/prompts',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RunsRoute = RunsRouteImport.update({
@@ -76,9 +94,12 @@ export interface FileRoutesByFullPath {
   '/approvals': typeof ApprovalsRoute
   '/copilot': typeof CopilotRoute
   '/customers': typeof CustomersRoute
+  '/evaluation': typeof EvaluationRoute
   '/ingestion': typeof IngestionRoute
   '/knowledge': typeof KnowledgeRoute
+  '/observability': typeof ObservabilityRoute
   '/orders': typeof OrdersRoute
+  '/prompts': typeof PromptsRoute
   '/runs': typeof RunsRouteWithChildren
   '/runs/$runId': typeof RunsRunIdRoute
   '/runs/': typeof RunsIndexRoute
@@ -88,9 +109,12 @@ export interface FileRoutesByTo {
   '/approvals': typeof ApprovalsRoute
   '/copilot': typeof CopilotRoute
   '/customers': typeof CustomersRoute
+  '/evaluation': typeof EvaluationRoute
   '/ingestion': typeof IngestionRoute
   '/knowledge': typeof KnowledgeRoute
+  '/observability': typeof ObservabilityRoute
   '/orders': typeof OrdersRoute
+  '/prompts': typeof PromptsRoute
   '/runs/$runId': typeof RunsRunIdRoute
   '/runs': typeof RunsIndexRoute
 }
@@ -100,9 +124,12 @@ export interface FileRoutesById {
   '/approvals': typeof ApprovalsRoute
   '/copilot': typeof CopilotRoute
   '/customers': typeof CustomersRoute
+  '/evaluation': typeof EvaluationRoute
   '/ingestion': typeof IngestionRoute
   '/knowledge': typeof KnowledgeRoute
+  '/observability': typeof ObservabilityRoute
   '/orders': typeof OrdersRoute
+  '/prompts': typeof PromptsRoute
   '/runs': typeof RunsRouteWithChildren
   '/runs/$runId': typeof RunsRunIdRoute
   '/runs/': typeof RunsIndexRoute
@@ -114,9 +141,12 @@ export interface FileRouteTypes {
     | '/approvals'
     | '/copilot'
     | '/customers'
+    | '/evaluation'
     | '/ingestion'
     | '/knowledge'
+    | '/observability'
     | '/orders'
+    | '/prompts'
     | '/runs'
     | '/runs/$runId'
     | '/runs/'
@@ -126,9 +156,12 @@ export interface FileRouteTypes {
     | '/approvals'
     | '/copilot'
     | '/customers'
+    | '/evaluation'
     | '/ingestion'
     | '/knowledge'
+    | '/observability'
     | '/orders'
+    | '/prompts'
     | '/runs/$runId'
     | '/runs'
   id:
@@ -137,9 +170,12 @@ export interface FileRouteTypes {
     | '/approvals'
     | '/copilot'
     | '/customers'
+    | '/evaluation'
     | '/ingestion'
     | '/knowledge'
+    | '/observability'
     | '/orders'
+    | '/prompts'
     | '/runs'
     | '/runs/$runId'
     | '/runs/'
@@ -150,9 +186,12 @@ export interface RootRouteChildren {
   ApprovalsRoute: typeof ApprovalsRoute
   CopilotRoute: typeof CopilotRoute
   CustomersRoute: typeof CustomersRoute
+  EvaluationRoute: typeof EvaluationRoute
   IngestionRoute: typeof IngestionRoute
   KnowledgeRoute: typeof KnowledgeRoute
+  ObservabilityRoute: typeof ObservabilityRoute
   OrdersRoute: typeof OrdersRoute
+  PromptsRoute: typeof PromptsRoute
   RunsRoute: typeof RunsRouteWithChildren
 }
 
@@ -186,6 +225,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CustomersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/evaluation': {
+      id: '/evaluation'
+      path: '/evaluation'
+      fullPath: '/evaluation'
+      preLoaderRoute: typeof EvaluationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/ingestion': {
       id: '/ingestion'
       path: '/ingestion'
@@ -200,11 +246,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KnowledgeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/observability': {
+      id: '/observability'
+      path: '/observability'
+      fullPath: '/observability'
+      preLoaderRoute: typeof ObservabilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/orders': {
       id: '/orders'
       path: '/orders'
       fullPath: '/orders'
       preLoaderRoute: typeof OrdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/prompts': {
+      id: '/prompts'
+      path: '/prompts'
+      fullPath: '/prompts'
+      preLoaderRoute: typeof PromptsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/runs': {
@@ -248,9 +308,12 @@ const rootRouteChildren: RootRouteChildren = {
   ApprovalsRoute: ApprovalsRoute,
   CopilotRoute: CopilotRoute,
   CustomersRoute: CustomersRoute,
+  EvaluationRoute: EvaluationRoute,
   IngestionRoute: IngestionRoute,
   KnowledgeRoute: KnowledgeRoute,
+  ObservabilityRoute: ObservabilityRoute,
   OrdersRoute: OrdersRoute,
+  PromptsRoute: PromptsRoute,
   RunsRoute: RunsRouteWithChildren,
 }
 export const routeTree = rootRouteImport
