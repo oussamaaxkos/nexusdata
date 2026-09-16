@@ -467,9 +467,9 @@ export const TOOLS: ToolDefinition[] = [
       ["ticket_number", "status", "priority"],
     ),
     execute: async (a) => {
-      const patch: Record<string, string> = {};
-      if (a.status) patch.status = a.status;
-      if (a.priority) patch.priority = a.priority;
+      const patch: { status?: string; priority?: string } = {};
+      if (a.status) patch.status = String(a.status);
+      if (a.priority) patch.priority = String(a.priority);
       if (!Object.keys(patch).length) return { error: "Nothing to update." };
       const { error, count } = await supabaseAdmin
         .from("tickets")
