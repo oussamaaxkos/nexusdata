@@ -335,6 +335,66 @@ ${OUTPUT_CONTRACT}`,
       }
     }
 
+    /* ------ Guard: never answer a policy question without retrieval ------ */
+    if (documentsRetrieved === 0) {
+      const ragTool = TOOL_MAP.get("search_knowledge_base");
+      if (ragTool) {
+        const ragStart = mark();
+        let ragOutput: unknown;
+        let ragStatus = "success";
+        let ragError: string | null = null;
+        const ragArgs = { query: input.request, department: null, top_k: 6 };
+        try {
+          ragOutput = await ragTool.execute(ragArgs as any);
+        } catch (e) {
+          ragStatus = "failed";
+          ragError = e instanceof Error ? e.message : String(e);
+          ragOutput = { error: ragError };
+        }
+
+        for (const chunk of ((ragOutput as any)?.chunks ?? []) as Citation[]) {
+          documentsRetrieved += 1;
+          if (!citations.find((c) => c.document === chunk.document && c.section === chunk.section)) {
+            citations.push(chunk);
+          }
+        }
+
+        usedTools.push("search_knowledge_base");
+        toolCallRows.push({
+          tool_name: "search_knowledge_base",
+          input: ragArgs,
+          output: ragOutput as any,
+          status: ragStatus,
+          risk_level: ragTool.risk_level,
+          permission_level: ragTool.permission_level,
+          error: ragError,
+          duration_ms: mark() - ragStart,
+        });
+        steps.push({
+          node: "rag_agent",
+          label: "Mandatory policy retrieval",
+          status: ragStatus === "success" ? "completed" : ragStatus,
+          detail: { input: ragArgs, output_preview: JSON.stringify(ragOutput).slice(0, 600) },
+          started_offset_ms: ragStart,
+          duration_ms: mark() - ragStart,
+          error: ragError,
+        });
+
+        if (documentsRetrieved > 0) {
+          // Force a fresh answer that takes the retrieved policy into account.
+          finalContent = null;
+          messages.push({
+            role: "user",
+            content: `Policy evidence retrieved on your behalf (you did not search it):\n${JSON.stringify(
+              ragOutput,
+            ).slice(0, 6000)}\n\nAnswer now using the records you already gathered plus this policy evidence. ${OUTPUT_CONTRACT}`,
+          });
+        }
+      }
+    }
+
+
+
     /* ---------------- Node 3: reasoning output ---------------- */
     if (!finalContent) {
       const wrap = await chatCompletion({
