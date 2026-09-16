@@ -215,6 +215,10 @@ Investigation plan: ${plan.join(" -> ") || "not specified"}
 
 Investigation order (operations runbook): order record, shipment record, ticket history, then policy.
 Use search_knowledge_base before stating any policy rule. Use calculate_compensation for any monetary amount.
+You may only set insufficient_evidence to true after you have actually called search_knowledge_base and the
+returned chunks do not cover the question. Never declare insufficient evidence without having searched policy.
+If the records show the situation does not qualify (for example a shipment delivered with zero delay days),
+that is a grounded answer: state it with citations instead of declaring insufficient evidence.
 HIGH and CRITICAL tools (create_email_draft, issue_refund) never execute: calling them only records a proposed action for human approval.
 When the investigation is complete, stop calling tools and reply with the JSON contract below.
 ${OUTPUT_CONTRACT}`,
