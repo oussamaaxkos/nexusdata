@@ -445,7 +445,7 @@ ${OUTPUT_CONTRACT}`,
           justification: a.justification,
           evidence: citations as unknown as any,
           risk_level: a.risk_level,
-          amount: a.amount,
+          amount: a.amount ?? null,
           status: "pending",
         }));
       if (rows.length) await supabaseAdmin.from("approvals").insert(rows);

@@ -44,7 +44,7 @@ export async function chatCompletion(opts: {
   if (!apiKey) throw new GatewayError(401, "AI gateway key is not configured.", false);
 
   const isGpt5Family = opts.model.startsWith("openai/gpt-5") || opts.model.startsWith("openai/gpt-6");
-  const body: Record<string, unknown> = {
+  const body: any = {
     model: opts.model,
     messages: opts.messages,
   };
