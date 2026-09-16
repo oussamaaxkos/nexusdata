@@ -14,7 +14,7 @@ export interface ToolDefinition {
   /** HIGH/CRITICAL tools never execute directly: they become proposed actions. */
   requires_approval: boolean;
   parameters: Record<string, unknown>;
-  execute: (args: Record<string, any>) => Promise<unknown>;
+  execute: (args: any) => Promise<unknown>;
 }
 
 const PERMISSION_RANK: Record<PermissionLevel, number> = {
@@ -107,7 +107,7 @@ export async function searchKnowledgeBase(args: {
 
 /* --------------------------- SQL catalogue --------------------------- */
 
-const SQL_CATALOGUE: Record<string, (params: Record<string, any>) => Promise<unknown>> = {
+const SQL_CATALOGUE: Record<string, (params: any) => Promise<unknown>> = {
   delayed_orders_count: async () => {
     const { count } = await supabaseAdmin
       .from("orders")
