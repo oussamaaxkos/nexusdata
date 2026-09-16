@@ -7,8 +7,8 @@ export function PageHeader({
   actions,
 }: {
   title: string;
-  subtitle?: string;
-  actions?: ReactNode;
+  subtitle?: string | undefined;
+  actions?: ReactNode | undefined;
 }) {
   return (
     <div className="flex flex-wrap items-end justify-between gap-4 border-b border-border pb-5">
@@ -87,9 +87,9 @@ export function StatCard({
 }: {
   label: string;
   value: ReactNode;
-  hint?: string;
-  trend?: string;
-  icon?: ReactNode;
+  hint?: string | undefined;
+  trend?: string | undefined;
+  icon?: ReactNode | undefined;
 }) {
   return (
     <div className="panel p-4">
@@ -113,11 +113,11 @@ export function Panel({
   children,
   className,
 }: {
-  title?: string;
-  description?: string;
-  actions?: ReactNode;
+  title?: string | undefined;
+  description?: string | undefined;
+  actions?: ReactNode | undefined;
   children: ReactNode;
-  className?: string;
+  className?: string | undefined;
 }) {
   return (
     <section className={cn("panel", className)}>
@@ -135,7 +135,7 @@ export function Panel({
   );
 }
 
-export function EmptyState({ title, hint }: { title: string; hint?: string }) {
+export function EmptyState({ title, hint }: { title: string; hint?: string | undefined }) {
   return (
     <div className="rounded-md border border-dashed border-border px-4 py-10 text-center">
       <p className="text-sm font-medium">{title}</p>
