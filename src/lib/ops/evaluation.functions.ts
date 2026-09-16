@@ -203,7 +203,7 @@ export const runEvaluationBatch = createServerFn({ method: "POST" })
           ((done.filter((r) => r.run_id).length / n) * 100).toFixed(2),
         ),
         avg_latency_ms: Math.round(avg((r) => r.latency_ms ?? 0)),
-        p95_latency_ms: p95,
+        p95_latency_ms: p95 ?? null,
         total_tokens: tokens,
         estimated_cost: Number(cost.toFixed(5)),
         completed_at: remaining > 0 ? null : new Date().toISOString(),
