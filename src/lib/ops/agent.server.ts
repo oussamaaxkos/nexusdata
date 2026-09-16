@@ -215,6 +215,10 @@ Investigation plan: ${plan.join(" -> ") || "not specified"}
 
 Investigation order (operations runbook): order record, shipment record, ticket history, then policy.
 Use search_knowledge_base before stating any policy rule. Use calculate_compensation for any monetary amount.
+You may only set insufficient_evidence to true after you have actually called search_knowledge_base and the
+returned chunks do not cover the question. Never declare insufficient evidence without having searched policy.
+If the records show the situation does not qualify (for example a shipment delivered with zero delay days),
+that is a grounded answer: state it with citations instead of declaring insufficient evidence.
 HIGH and CRITICAL tools (create_email_draft, issue_refund) never execute: calling them only records a proposed action for human approval.
 When the investigation is complete, stop calling tools and reply with the JSON contract below.
 ${OUTPUT_CONTRACT}`,
@@ -330,6 +334,66 @@ ${OUTPUT_CONTRACT}`,
         });
       }
     }
+
+    /* ------ Guard: never answer a policy question without retrieval ------ */
+    if (documentsRetrieved === 0) {
+      const ragTool = TOOL_MAP.get("search_knowledge_base");
+      if (ragTool) {
+        const ragStart = mark();
+        let ragOutput: unknown;
+        let ragStatus = "success";
+        let ragError: string | null = null;
+        const ragArgs = { query: input.request, department: null, top_k: 6 };
+        try {
+          ragOutput = await ragTool.execute(ragArgs as any);
+        } catch (e) {
+          ragStatus = "failed";
+          ragError = e instanceof Error ? e.message : String(e);
+          ragOutput = { error: ragError };
+        }
+
+        for (const chunk of ((ragOutput as any)?.chunks ?? []) as Citation[]) {
+          documentsRetrieved += 1;
+          if (!citations.find((c) => c.document === chunk.document && c.section === chunk.section)) {
+            citations.push(chunk);
+          }
+        }
+
+        usedTools.push("search_knowledge_base");
+        toolCallRows.push({
+          tool_name: "search_knowledge_base",
+          input: ragArgs,
+          output: ragOutput as any,
+          status: ragStatus,
+          risk_level: ragTool.risk_level,
+          permission_level: ragTool.permission_level,
+          error: ragError,
+          duration_ms: mark() - ragStart,
+        });
+        steps.push({
+          node: "rag_agent",
+          label: "Mandatory policy retrieval",
+          status: ragStatus === "success" ? "completed" : ragStatus,
+          detail: { input: ragArgs, output_preview: JSON.stringify(ragOutput).slice(0, 600) },
+          started_offset_ms: ragStart,
+          duration_ms: mark() - ragStart,
+          error: ragError,
+        });
+
+        if (documentsRetrieved > 0) {
+          // Force a fresh answer that takes the retrieved policy into account.
+          finalContent = null;
+          messages.push({
+            role: "user",
+            content: `Policy evidence retrieved on your behalf (you did not search it):\n${JSON.stringify(
+              ragOutput,
+            ).slice(0, 6000)}\n\nAnswer now using the records you already gathered plus this policy evidence. ${OUTPUT_CONTRACT}`,
+          });
+        }
+      }
+    }
+
+
 
     /* ---------------- Node 3: reasoning output ---------------- */
     if (!finalContent) {
