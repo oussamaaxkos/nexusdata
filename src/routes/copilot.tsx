@@ -16,6 +16,8 @@ import {
 } from "@/components/ops/primitives";
 import { runInvestigation } from "@/lib/ops/agent.functions";
 import { runQuery } from "@/lib/ops/client-queries";
+import { chartableFromToolCalls } from "@/lib/ops/chartable";
+import { ResultChart } from "@/components/ops/result-chart";
 
 export const Route = createFileRoute("/copilot")({
   head: () => ({
