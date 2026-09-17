@@ -3,7 +3,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { toast } from "sonner";
-import { ArrowUp, FileText, Loader2, ShieldAlert } from "lucide-react";
+import { ArrowUp, BarChart3, FileText, Loader2, ShieldAlert } from "lucide-react";
 import { AppShell } from "@/components/ops/app-shell";
 import {
   EmptyState,
