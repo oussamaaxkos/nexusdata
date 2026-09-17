@@ -3,7 +3,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { toast } from "sonner";
-import { ArrowUp, FileText, Loader2, ShieldAlert } from "lucide-react";
+import { ArrowUp, BarChart3, FileText, Loader2, ShieldAlert } from "lucide-react";
 import { AppShell } from "@/components/ops/app-shell";
 import {
   EmptyState,
@@ -16,6 +16,8 @@ import {
 } from "@/components/ops/primitives";
 import { runInvestigation } from "@/lib/ops/agent.functions";
 import { runQuery } from "@/lib/ops/client-queries";
+import { chartableFromToolCalls } from "@/lib/ops/chartable";
+import { ResultChart } from "@/components/ops/result-chart";
 
 export const Route = createFileRoute("/copilot")({
   head: () => ({
@@ -57,9 +59,12 @@ function Copilot() {
   const invoke = useServerFn(runInvestigation);
   const qc = useQueryClient();
 
+  const [showChartFor, setShowChartFor] = useState<string | null>(null);
+
   const detail = useQuery({ ...runQuery(activeRunId ?? ""), enabled: Boolean(activeRunId) });
   const run = detail.data?.run;
   const citations = (run?.citations ?? []) as any[];
+  const chartSeries = chartableFromToolCalls((detail.data?.tools ?? []) as any[]);
 
   async function submit(text: string) {
     if (!text.trim() || busy) return;
@@ -128,6 +133,20 @@ function Copilot() {
                     }
                   >
                     <p className="whitespace-pre-wrap">{t.text}</p>
+                    {t.runId && t.runId === activeRunId && chartSeries.length ? (
+                      <div className="mt-3 space-y-3">
+                        <button
+                          onClick={() => setShowChartFor(showChartFor === t.runId ? null : (t.runId ?? null))}
+                          className="inline-flex items-center gap-1.5 rounded-md border border-border bg-background px-2.5 py-1 text-xs font-medium transition-colors hover:border-primary/50 hover:text-primary"
+                        >
+                          <BarChart3 className="h-3.5 w-3.5" />
+                          {showChartFor === t.runId ? "Hide visualisation" : "Visualise results"}
+                        </button>
+                        {showChartFor === t.runId
+                          ? chartSeries.map((s, idx) => <ResultChart key={idx} series={s} />)
+                          : null}
+                      </div>
+                    ) : null}
                     {t.runId ? (
                       <Link
                         to="/runs/$runId"
