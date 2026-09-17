@@ -59,9 +59,12 @@ function Copilot() {
   const invoke = useServerFn(runInvestigation);
   const qc = useQueryClient();
 
+  const [showChartFor, setShowChartFor] = useState<string | null>(null);
+
   const detail = useQuery({ ...runQuery(activeRunId ?? ""), enabled: Boolean(activeRunId) });
   const run = detail.data?.run;
   const citations = (run?.citations ?? []) as any[];
+  const chartSeries = chartableFromToolCalls((detail.data?.tools ?? []) as any[]);
 
   async function submit(text: string) {
     if (!text.trim() || busy) return;
