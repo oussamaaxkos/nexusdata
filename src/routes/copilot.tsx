@@ -133,6 +133,20 @@ function Copilot() {
                     }
                   >
                     <p className="whitespace-pre-wrap">{t.text}</p>
+                    {t.runId && t.runId === activeRunId && chartSeries.length ? (
+                      <div className="mt-3 space-y-3">
+                        <button
+                          onClick={() => setShowChartFor(showChartFor === t.runId ? null : (t.runId ?? null))}
+                          className="inline-flex items-center gap-1.5 rounded-md border border-border bg-background px-2.5 py-1 text-xs font-medium transition-colors hover:border-primary/50 hover:text-primary"
+                        >
+                          <BarChart3 className="h-3.5 w-3.5" />
+                          {showChartFor === t.runId ? "Hide visualisation" : "Visualise results"}
+                        </button>
+                        {showChartFor === t.runId
+                          ? chartSeries.map((s, idx) => <ResultChart key={idx} series={s} />)
+                          : null}
+                      </div>
+                    ) : null}
                     {t.runId ? (
                       <Link
                         to="/runs/$runId"
