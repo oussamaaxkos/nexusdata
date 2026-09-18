@@ -15,12 +15,12 @@ import { ordersQuery } from "@/lib/ops/client-queries";
 export const Route = createFileRoute("/orders")({
   head: () => ({
     meta: [
-      { title: "Orders & Shipments | OpsMind AI" },
+      { title: "Orders & Shipments | NexusData" },
       {
         name: "description",
         content: "Order records with carrier tracking, delay days and delay reasons used as agent evidence.",
       },
-      { property: "og:title", content: "Orders & Shipments | OpsMind AI" },
+      { property: "og:title", content: "Orders & Shipments | NexusData" },
       { property: "og:description", content: "Operational order and shipment data behind every investigation." },
     ],
   }),

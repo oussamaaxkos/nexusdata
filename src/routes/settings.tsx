@@ -7,12 +7,12 @@ import { modelsQuery, promptsQuery, toolRegistryQuery } from "@/lib/ops/client-q
 export const Route = createFileRoute("/settings")({
   head: () => ({
     meta: [
-      { title: "Settings | OpsMind AI" },
+      { title: "Settings | NexusData" },
       {
         name: "description",
-        content: "Risk thresholds, role permissions, retrieval configuration and platform architecture for OpsMind AI.",
+        content: "Risk thresholds, role permissions, retrieval configuration and platform architecture for NexusData.",
       },
-      { property: "og:title", content: "Settings | OpsMind AI" },
+      { property: "og:title", content: "Settings | NexusData" },
       { property: "og:description", content: "Governance configuration of the agentic operations platform." },
     ],
   }),

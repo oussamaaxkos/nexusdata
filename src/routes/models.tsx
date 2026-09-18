@@ -10,12 +10,12 @@ import { modelsQuery } from "@/lib/ops/client-queries";
 export const Route = createFileRoute("/models")({
   head: () => ({
     meta: [
-      { title: "Model Management | OpsMind AI" },
+      { title: "Model Management | NexusData" },
       {
         name: "description",
         content: "Swap the reasoning model behind the agent: provider, context window, temperature and token pricing.",
       },
-      { property: "og:title", content: "Model Management | OpsMind AI" },
+      { property: "og:title", content: "Model Management | NexusData" },
       { property: "og:description", content: "Provider-agnostic model registry with cost and capability metadata." },
     ],
   }),

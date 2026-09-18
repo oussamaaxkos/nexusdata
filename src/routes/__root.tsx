@@ -20,7 +20,7 @@ function NotFoundComponent() {
         <h1 className="text-7xl font-bold text-foreground">404</h1>
         <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          This screen does not exist in the OpsMind console.
+          This screen does not exist in the NexusData console.
         </p>
         <div className="mt-6">
           <Link
@@ -76,13 +76,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "OpsMind AI — Agentic Enterprise Operations" },
+      { title: "NexusData — Data Intelligence Platform" },
       {
         name: "description",
         content:
-          "Agentic AI operations platform with tool calling, RAG evidence, approvals, evaluation and full observability.",
+          "NexusData: unified data intelligence platform with ingestion, transformation, AI-powered analytics and full observability.",
       },
-      { name: "author", content: "OpsMind AI" },
+      { name: "author", content: "NexusData" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

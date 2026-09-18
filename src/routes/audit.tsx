@@ -16,12 +16,12 @@ import { auditQuery } from "@/lib/ops/client-queries";
 export const Route = createFileRoute("/audit")({
   head: () => ({
     meta: [
-      { title: "Audit Logs | OpsMind AI" },
+      { title: "Audit Logs | NexusData" },
       {
         name: "description",
         content: "Immutable record of every agent run, tool execution and human decision, filterable by actor and risk.",
       },
-      { property: "og:title", content: "Audit Logs | OpsMind AI" },
+      { property: "og:title", content: "Audit Logs | NexusData" },
       { property: "og:description", content: "Compliance-grade trail of agent and human activity." },
     ],
   }),

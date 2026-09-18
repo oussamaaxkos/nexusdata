@@ -23,13 +23,13 @@ import { Message, MessageContent, MessageResponse } from "@/components/ai-elemen
 export const Route = createFileRoute("/copilot")({
   head: () => ({
     meta: [
-      { title: "AI Copilot | OpsMind AI" },
+      { title: "AI Copilot | NexusData" },
       {
         name: "description",
         content:
           "Ask the operations agent to investigate orders, shipments, invoices and policies with cited evidence and risk-aware actions.",
       },
-      { property: "og:title", content: "AI Copilot | OpsMind AI" },
+      { property: "og:title", content: "AI Copilot | NexusData" },
       {
         property: "og:description",
         content:

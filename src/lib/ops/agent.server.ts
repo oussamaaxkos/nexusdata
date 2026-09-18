@@ -74,7 +74,7 @@ async function loadConfig() {
     promptVersion: prompt?.version ?? "v3",
     systemPrompt:
       prompt?.content ??
-      "You are OpsMind, an enterprise operations agent. Use only the provided tools for evidence.",
+      "You are NexusData, an enterprise operations agent. Use only the provided tools for evidence.",
   };
 }
 

@@ -1,4 +1,4 @@
-// Browser-safe shared types for the OpsMind agent platform.
+// Browser-safe shared types for the NexusData agent platform.
 
 export type RiskLevel = "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";
 export type PermissionLevel = "viewer" | "operator" | "manager" | "admin";

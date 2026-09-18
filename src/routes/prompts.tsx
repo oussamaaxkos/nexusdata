@@ -11,12 +11,12 @@ import { promptsQuery } from "@/lib/ops/client-queries";
 export const Route = createFileRoute("/prompts")({
   head: () => ({
     meta: [
-      { title: "Prompt Management | OpsMind AI" },
+      { title: "Prompt Management | NexusData" },
       {
         name: "description",
         content: "Versioned system prompts with changelogs, side-by-side comparison and one-click activation.",
       },
-      { property: "og:title", content: "Prompt Management | OpsMind AI" },
+      { property: "og:title", content: "Prompt Management | NexusData" },
       { property: "og:description", content: "Prompt versioning and rollout control for the operations agent." },
     ],
   }),

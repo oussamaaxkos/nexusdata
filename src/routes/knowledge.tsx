@@ -10,12 +10,12 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/knowledge")({
   head: () => ({
     meta: [
-      { title: "Knowledge Base | OpsMind AI" },
+      { title: "Knowledge Base | NexusData" },
       {
         name: "description",
         content: "Indexed internal policies, procedures and manuals retrieved by the agent as cited evidence.",
       },
-      { property: "og:title", content: "Knowledge Base | OpsMind AI" },
+      { property: "og:title", content: "Knowledge Base | NexusData" },
       { property: "og:description", content: "Versioned policy documents with chunk-level retrieval." },
     ],
   }),

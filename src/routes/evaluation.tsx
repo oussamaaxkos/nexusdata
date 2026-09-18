@@ -26,13 +26,13 @@ import {
 export const Route = createFileRoute("/evaluation")({
   head: () => ({
     meta: [
-      { title: "AI Evaluation | OpsMind AI" },
+      { title: "AI Evaluation | NexusData" },
       {
         name: "description",
         content:
           "Benchmark the agent on a golden dataset: intent accuracy, tool selection, retrieval recall, groundedness, latency and cost.",
       },
-      { property: "og:title", content: "AI Evaluation | OpsMind AI" },
+      { property: "og:title", content: "AI Evaluation | NexusData" },
       { property: "og:description", content: "Measurable agent quality with per-case results and model comparison." },
     ],
   }),

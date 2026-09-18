@@ -19,12 +19,12 @@ import { approvalsQuery } from "@/lib/ops/client-queries";
 export const Route = createFileRoute("/approvals")({
   head: () => ({
     meta: [
-      { title: "Approvals | OpsMind AI" },
+      { title: "Approvals | NexusData" },
       {
         name: "description",
         content: "Human-in-the-loop queue for high and critical agent actions such as refunds and customer emails.",
       },
-      { property: "og:title", content: "Approvals | OpsMind AI" },
+      { property: "og:title", content: "Approvals | NexusData" },
       { property: "og:description", content: "Approve, reject or request changes on sensitive agent actions." },
     ],
   }),

@@ -18,12 +18,12 @@ import { runMetricsQuery } from "@/lib/ops/client-queries";
 export const Route = createFileRoute("/observability")({
   head: () => ({
     meta: [
-      { title: "Observability | OpsMind AI" },
+      { title: "Observability | NexusData" },
       {
         name: "description",
         content: "Latency, token usage, cost, tool volume, approval rate and grounding failures across agent runs.",
       },
-      { property: "og:title", content: "Observability | OpsMind AI" },
+      { property: "og:title", content: "Observability | NexusData" },
       { property: "og:description", content: "Production telemetry for an agentic AI system." },
     ],
   }),

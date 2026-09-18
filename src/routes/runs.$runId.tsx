@@ -20,13 +20,13 @@ import { MessageResponse } from "@/components/ai-elements/message";
 export const Route = createFileRoute("/runs/$runId")({
   head: () => ({
     meta: [
-      { title: "Run Trace | OpsMind AI" },
+      { title: "Run Trace | NexusData" },
       {
         name: "description",
         content:
           "Node-by-node execution trace of an agent run: plan, tools, evidence, verification and approvals.",
       },
-      { property: "og:title", content: "Run Trace | OpsMind AI" },
+      { property: "og:title", content: "Run Trace | NexusData" },
       {
         property: "og:description",
         content: "Full agent trace with inputs, outputs, timings and citations.",

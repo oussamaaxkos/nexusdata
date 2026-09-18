@@ -32,13 +32,13 @@ import { businessStatsQuery, runMetricsQuery, runsQuery } from "@/lib/ops/client
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "AI Operations Overview | OpsMind AI" },
+      { title: "AI Operations Overview | NexusData" },
       {
         name: "description",
         content:
           "Live view of agentic customer-operations automation: run volume, latency, cost, approvals and grounding quality.",
       },
-      { property: "og:title", content: "AI Operations Overview | OpsMind AI" },
+      { property: "og:title", content: "AI Operations Overview | NexusData" },
       {
         property: "og:description",
         content: "Agentic operations dashboard with automation impact, risk mix and evidence quality.",
@@ -182,7 +182,7 @@ function Dashboard() {
               <BarChart
                 data={[
                   { name: "Manual", minutes: MANUAL_MINUTES },
-                  { name: "OpsMind", minutes: AGENT_MINUTES },
+                  { name: "NexusData", minutes: AGENT_MINUTES },
                 ]}
               >
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" vertical={false} />

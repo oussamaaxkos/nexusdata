@@ -8,12 +8,12 @@ import { customersQuery } from "@/lib/ops/client-queries";
 export const Route = createFileRoute("/customers")({
   head: () => ({
     meta: [
-      { title: "Customers | OpsMind AI" },
+      { title: "Customers | NexusData" },
       {
         name: "description",
         content: "Synthetic enterprise customer base with segments, lifetime value and parent companies.",
       },
-      { property: "og:title", content: "Customers | OpsMind AI" },
+      { property: "og:title", content: "Customers | NexusData" },
       { property: "og:description", content: "Structured customer records the agent queries during investigations." },
     ],
   }),

@@ -12,12 +12,12 @@ import { documentsQuery } from "@/lib/ops/client-queries";
 export const Route = createFileRoute("/ingestion")({
   head: () => ({
     meta: [
-      { title: "Document Ingestion | OpsMind AI" },
+      { title: "Document Ingestion | NexusData" },
       {
         name: "description",
         content: "Validate, parse, clean, chunk and index internal documents into the retrieval layer.",
       },
-      { property: "og:title", content: "Document Ingestion | OpsMind AI" },
+      { property: "og:title", content: "Document Ingestion | NexusData" },
       { property: "og:description", content: "The ingestion pipeline that feeds grounded agent answers." },
     ],
   }),

@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * OpsMind AI design system.
+ * NexusData design system.
  * Graphite enterprise surface, signal-teal primary, amber/red risk scale.
  * All colours are oklch tokens; components must never hardcode colours.
  */

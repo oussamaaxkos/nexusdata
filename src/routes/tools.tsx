@@ -7,13 +7,13 @@ import { toolRegistryQuery } from "@/lib/ops/client-queries";
 export const Route = createFileRoute("/tools")({
   head: () => ({
     meta: [
-      { title: "Tool Registry & MCP | OpsMind AI" },
+      { title: "Tool Registry & MCP | NexusData" },
       {
         name: "description",
         content:
           "Every agent capability with its JSON schema, category, permission level, risk level and approval requirement.",
       },
-      { property: "og:title", content: "Tool Registry & MCP | OpsMind AI" },
+      { property: "og:title", content: "Tool Registry & MCP | NexusData" },
       { property: "og:description", content: "MCP-compatible tool contracts behind the operations agent." },
     ],
   }),

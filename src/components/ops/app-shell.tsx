@@ -64,7 +64,7 @@ function ThemeToggle() {
   const [dark, setDark] = useState(true);
 
   useEffect(() => {
-    const stored = localStorage.getItem("opsmind-theme");
+    const stored = localStorage.getItem("NexusData-theme");
     const isDark = stored ? stored === "dark" : true;
     setDark(isDark);
     document.documentElement.classList.toggle("dark", isDark);
@@ -78,7 +78,7 @@ function ThemeToggle() {
         const next = !dark;
         setDark(next);
         document.documentElement.classList.toggle("dark", next);
-        localStorage.setItem("opsmind-theme", next ? "dark" : "light");
+        localStorage.setItem("NexusData-theme", next ? "dark" : "light");
       }}
       className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
     >
@@ -98,8 +98,8 @@ export function AppShell({ children }: { children: ReactNode }) {
             <ShieldCheck className="h-4 w-4" />
           </div>
           <div>
-            <p className="text-sm font-semibold leading-tight">OpsMind AI</p>
-            <p className="text-[11px] leading-tight text-muted-foreground">Agentic Operations</p>
+            <p className="text-sm font-semibold leading-tight">NexusData</p>
+            <p className="text-[11px] leading-tight text-muted-foreground">Data Intelligence Platform</p>
           </div>
         </div>
         <nav className="flex-1 space-y-5 overflow-y-auto px-2 pb-6">
@@ -145,7 +145,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary text-primary-foreground">
               <ShieldCheck className="h-4 w-4" />
             </div>
-            <span className="text-sm font-semibold">OpsMind AI</span>
+            <span className="text-sm font-semibold">NexusData</span>
           </div>
           <div className="hidden items-center gap-2 text-xs text-muted-foreground lg:flex">
             <span className="inline-flex h-2 w-2 rounded-full bg-success" />

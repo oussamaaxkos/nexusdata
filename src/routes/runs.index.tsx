@@ -16,12 +16,12 @@ import { runsQuery } from "@/lib/ops/client-queries";
 export const Route = createFileRoute("/runs/")({
   head: () => ({
     meta: [
-      { title: "Agent Runs | OpsMind AI" },
+      { title: "Agent Runs | NexusData" },
       {
         name: "description",
         content: "Every agent investigation with intent, risk level, verification outcome, latency, tokens and cost.",
       },
-      { property: "og:title", content: "Agent Runs | OpsMind AI" },
+      { property: "og:title", content: "Agent Runs | NexusData" },
       { property: "og:description", content: "Traceable history of every agentic operations run." },
     ],
   }),
