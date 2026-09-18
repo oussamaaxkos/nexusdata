@@ -12,10 +12,21 @@ const IGNORED_KEYS = new Set(["id", "run_id", "customer_id", "order_id", "invoic
 function findRows(output: unknown): Record<string, unknown>[] | null {
   if (Array.isArray(output)) return output.filter((r) => r && typeof r === "object") as Record<string, unknown>[];
   if (output && typeof output === "object") {
-    for (const key of ["rows", "data", "results", "items"]) {
-      const candidate = (output as Record<string, unknown>)[key];
-      if (Array.isArray(candidate)) {
+    const record = output as Record<string, unknown>;
+    // Any array of objects on the payload (segments, carriers, customers, products…)
+    for (const [key, candidate] of Object.entries(record)) {
+      if (key === "chunks") continue;
+      if (Array.isArray(candidate) && candidate.some((r) => r && typeof r === "object")) {
         return candidate.filter((r) => r && typeof r === "object") as Record<string, unknown>[];
+      }
+    }
+    // Tally objects such as { counts: { delayed: 214, delivered: 572 } }
+    for (const [key, candidate] of Object.entries(record)) {
+      if (candidate && typeof candidate === "object" && !Array.isArray(candidate)) {
+        const entries = Object.entries(candidate as Record<string, unknown>);
+        if (entries.length >= 2 && entries.every(([, v]) => isNumeric(v))) {
+          return entries.map(([label, value]) => ({ [key === "counts" ? "category" : key]: label, count: Number(value) }));
+        }
       }
     }
   }
