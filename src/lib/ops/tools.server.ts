@@ -179,9 +179,9 @@ const SQL_CATALOGUE: Record<string, (params: any) => Promise<unknown>> = {
       .limit(2000);
     const agg: Record<string, { shipments: number; delay: number }> = {};
     for (const r of (data ?? []) as any[]) {
-      agg[r.carrier] ??= { shipments: 0, delay: 0 };
-      agg[r.carrier].shipments += 1;
-      agg[r.carrier].delay += Number(r.delay_days);
+      const bucket = (agg[r.carrier] ??= { shipments: 0, delay: 0 });
+      bucket.shipments += 1;
+      bucket.delay += Number(r.delay_days);
     }
     return {
       carriers: Object.entries(agg)
