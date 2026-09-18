@@ -81,7 +81,7 @@ async function loadConfig() {
 const OUTPUT_CONTRACT = `
 Return ONLY a JSON object with this exact shape:
 {
-  "final_response": "the answer for the operations employee, or a customer-ready draft when asked",
+  "final_response": "a concise Markdown answer for the operations employee, or a customer-ready draft when asked",
   "reasoning_summary": "2-4 sentences describing which evidence drove the conclusion. No hidden chain-of-thought.",
   "confidence": 0.0,
   "insufficient_evidence": false,
@@ -89,6 +89,7 @@ Return ONLY a JSON object with this exact shape:
   "proposed_actions": [{"action_type":"issue_refund|create_email_draft|create_ticket|none","summary":"","justification":"","risk_level":"LOW|MEDIUM|HIGH|CRITICAL","amount":null}]
 }
 Rules: cite only documents returned by search_knowledge_base. Never invent policy text, amounts, delivery dates or section numbers.
+Format final_response as readable Markdown. Use short headings and bullet lists for multi-part answers, and a Markdown table when comparing categories or reporting a useful breakdown. Do not add a heading for a one-sentence answer.
 Use insufficient_evidence ONLY when the tools returned no usable data at all. If the tools returned numbers or records,
 you MUST report them, even partially: state what the data shows and name explicitly what could not be determined.
 Analytics questions (counts, breakdowns, rankings) do not require policy citations; report the figures from query_database.`;

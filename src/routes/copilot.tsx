@@ -18,11 +18,7 @@ import { runInvestigation } from "@/lib/ops/agent.functions";
 import { runQuery } from "@/lib/ops/client-queries";
 import { chartableFromToolCalls } from "@/lib/ops/chartable";
 import { ResultChart } from "@/components/ops/result-chart";
-import {
-  Message,
-  MessageContent,
-  MessageResponse,
-} from "@/components/ai-elements/message";
+import { Message, MessageContent, MessageResponse } from "@/components/ai-elements/message";
 
 export const Route = createFileRoute("/copilot")({
   head: () => ({
@@ -36,7 +32,8 @@ export const Route = createFileRoute("/copilot")({
       { property: "og:title", content: "AI Copilot | OpsMind AI" },
       {
         property: "og:description",
-        content: "Agentic investigation with live tool tracing, citations and human approval routing.",
+        content:
+          "Agentic investigation with live tool tracing, citations and human approval routing.",
       },
     ],
   }),
@@ -77,7 +74,9 @@ function Copilot() {
     setTurns((t) => [...t, { role: "user", text }]);
     setInput("");
     try {
-      const result = await invoke({ data: { request: text, actor: "marta.rossi", actorRole: "operator" } });
+      const result = await invoke({
+        data: { request: text, actor: "marta.rossi", actorRole: "operator" },
+      });
       setActiveRunId(result.run_id);
       const fresh = await qc.fetchQuery(runQuery(result.run_id));
       setTurns((t) => [
@@ -107,7 +106,11 @@ function Copilot() {
       />
 
       <div className="grid gap-4 xl:grid-cols-[1.35fr_1fr]">
-        <Panel className="flex min-h-[560px] flex-col" title="Investigation" description="Operations conversation">
+        <Panel
+          className="flex min-h-[560px] flex-col"
+          title="Investigation"
+          description="Operations conversation"
+        >
           <div className="flex-1 space-y-4">
             {turns.length === 0 ? (
               <div className="space-y-3">
@@ -145,7 +148,9 @@ function Copilot() {
                     {t.runId && t.runId === activeRunId && chartSeries.length ? (
                       <div className="mt-3 space-y-3">
                         <button
-                          onClick={() => setShowChartFor(showChartFor === t.runId ? null : (t.runId ?? null))}
+                          onClick={() =>
+                            setShowChartFor(showChartFor === t.runId ? null : (t.runId ?? null))
+                          }
                           className="inline-flex items-center gap-1.5 rounded-md border border-border bg-background px-2.5 py-1 text-xs font-medium transition-colors hover:border-primary/50 hover:text-primary"
                         >
                           <BarChart3 className="h-3.5 w-3.5" />
@@ -171,7 +176,8 @@ function Copilot() {
             )}
             {busy ? (
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Loader2 className="h-4 w-4 animate-spin" /> Investigating: planning, tools, verification…
+                <Loader2 className="h-4 w-4 animate-spin" /> Investigating: planning, tools,
+                verification…
               </div>
             ) : null}
           </div>
@@ -202,7 +208,11 @@ function Copilot() {
               className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-primary text-primary-foreground transition-colors hover:bg-primary/90 disabled:opacity-50"
               aria-label="Send request"
             >
-              {busy ? <Loader2 className="h-4 w-4 animate-spin" /> : <ArrowUp className="h-4 w-4" />}
+              {busy ? (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              ) : (
+                <ArrowUp className="h-4 w-4" />
+              )}
             </button>
           </form>
         </Panel>
@@ -212,7 +222,10 @@ function Copilot() {
             {detail.data?.steps.length ? (
               <ol className="space-y-2">
                 {detail.data.steps.map((s: any) => (
-                  <li key={s.id} className="flex items-start gap-2 rounded-md border border-border bg-surface-2 px-3 py-2">
+                  <li
+                    key={s.id}
+                    className="flex items-start gap-2 rounded-md border border-border bg-surface-2 px-3 py-2"
+                  >
                     <span
                       className={
                         s.status === "failed"
@@ -242,7 +255,10 @@ function Copilot() {
                 <Metric label="Confidence" value={`${Math.round((run.confidence ?? 0) * 100)}%`} />
                 <Metric label="Latency" value={`${fmtNumber(run.latency_ms)} ms`} />
                 <Metric label="Tool calls" value={fmtNumber(run.tool_call_count)} />
-                <Metric label="Tokens" value={fmtNumber((run.input_tokens ?? 0) + (run.output_tokens ?? 0))} />
+                <Metric
+                  label="Tokens"
+                  value={fmtNumber((run.input_tokens ?? 0) + (run.output_tokens ?? 0))}
+                />
               </div>
               <div className="mt-3 flex flex-wrap items-center gap-2">
                 <RiskBadge risk={run.risk_level} />
@@ -276,7 +292,10 @@ function Copilot() {
                 ))}
               </ul>
             ) : (
-              <EmptyState title="No sources yet" hint="Policy questions retrieve indexed document chunks." />
+              <EmptyState
+                title="No sources yet"
+                hint="Policy questions retrieve indexed document chunks."
+              />
             )}
           </Panel>
         </div>
