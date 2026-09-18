@@ -88,9 +88,10 @@ Return ONLY a JSON object with this exact shape:
   "citations": [{"document":"", "section":"", "version":"", "effective_date":"", "excerpt":""}],
   "proposed_actions": [{"action_type":"issue_refund|create_email_draft|create_ticket|none","summary":"","justification":"","risk_level":"LOW|MEDIUM|HIGH|CRITICAL","amount":null}]
 }
-Rules: cite only documents returned by search_knowledge_base. If a required record or policy section is missing,
-set insufficient_evidence to true and make final_response exactly "Insufficient evidence to determine this."
-Never invent policy text, amounts, delivery dates or section numbers.`;
+Rules: cite only documents returned by search_knowledge_base. Never invent policy text, amounts, delivery dates or section numbers.
+Use insufficient_evidence ONLY when the tools returned no usable data at all. If the tools returned numbers or records,
+you MUST report them, even partially: state what the data shows and name explicitly what could not be determined.
+Analytics questions (counts, breakdowns, rankings) do not require policy citations; report the figures from query_database.`;
 
 export interface RunAgentInput {
   request: string;
