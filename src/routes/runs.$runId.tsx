@@ -15,6 +15,7 @@ import {
 } from "@/components/ops/primitives";
 import { runQuery } from "@/lib/ops/client-queries";
 import { cn } from "@/lib/utils";
+import { MessageResponse } from "@/components/ai-elements/message";
 
 export const Route = createFileRoute("/runs/$runId")({
   head: () => ({
@@ -148,7 +149,9 @@ function RunDetail() {
 
         <div className="space-y-4">
           <Panel title="Final response">
-            <p className="whitespace-pre-wrap text-sm">{run.final_response ?? run.error ?? "—"}</p>
+            <MessageResponse className="text-sm leading-6">
+              {run.final_response ?? run.error ?? "—"}
+            </MessageResponse>
             {run.reasoning_summary ? (
               <p className="mt-3 border-t border-border pt-3 text-xs text-muted-foreground">
                 {run.reasoning_summary}

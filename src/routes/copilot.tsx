@@ -18,6 +18,11 @@ import { runInvestigation } from "@/lib/ops/agent.functions";
 import { runQuery } from "@/lib/ops/client-queries";
 import { chartableFromToolCalls } from "@/lib/ops/chartable";
 import { ResultChart } from "@/components/ops/result-chart";
+import {
+  Message,
+  MessageContent,
+  MessageResponse,
+} from "@/components/ai-elements/message";
 
 export const Route = createFileRoute("/copilot")({
   head: () => ({
@@ -124,15 +129,19 @@ function Copilot() {
               </div>
             ) : (
               turns.map((t, i) => (
-                <div key={i} className={t.role === "user" ? "flex justify-end" : ""}>
-                  <div
+                <Message key={i} from={t.role === "agent" ? "assistant" : "user"}>
+                  <MessageContent
                     className={
                       t.role === "user"
-                        ? "max-w-[85%] rounded-lg rounded-br-sm bg-primary px-3 py-2 text-sm text-primary-foreground"
-                        : "max-w-[92%] rounded-lg rounded-bl-sm border border-border bg-surface-2 px-3 py-2 text-sm"
+                        ? "max-w-[85%] bg-primary px-3 py-2 text-primary-foreground"
+                        : "w-full max-w-[92%]"
                     }
                   >
-                    <p className="whitespace-pre-wrap">{t.text}</p>
+                    {t.role === "agent" ? (
+                      <MessageResponse className="text-sm leading-6">{t.text}</MessageResponse>
+                    ) : (
+                      <p className="whitespace-pre-wrap">{t.text}</p>
+                    )}
                     {t.runId && t.runId === activeRunId && chartSeries.length ? (
                       <div className="mt-3 space-y-3">
                         <button
@@ -156,8 +165,8 @@ function Copilot() {
                         Open full trace
                       </Link>
                     ) : null}
-                  </div>
-                </div>
+                  </MessageContent>
+                </Message>
               ))
             )}
             {busy ? (
