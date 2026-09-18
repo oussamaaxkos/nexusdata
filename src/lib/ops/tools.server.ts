@@ -149,6 +149,50 @@ const SQL_CATALOGUE: Record<string, (params: any) => Promise<unknown>> = {
       })),
     };
   },
+  delayed_orders_by_segment: async () => {
+    const { data } = await supabaseAdmin
+      .from("orders")
+      .select("total_amount, customers!inner(segment)")
+      .eq("status", "delayed")
+      .limit(2000);
+    const agg: Record<string, { orders: number; value: number }> = {};
+    for (const r of (data ?? []) as any[]) {
+      const seg = r.customers.segment;
+      agg[seg] ??= { orders: 0, value: 0 };
+      agg[seg].orders += 1;
+      agg[seg].value += Number(r.total_amount);
+    }
+    const segments = Object.entries(agg)
+      .map(([segment, v]) => ({
+        segment,
+        delayed_orders: v.orders,
+        delayed_value: Number(v.value.toFixed(2)),
+      }))
+      .sort((a, b) => b.delayed_orders - a.delayed_orders);
+    return { total_delayed: segments.reduce((s, r) => s + r.delayed_orders, 0), segments };
+  },
+  delayed_orders_by_carrier: async () => {
+    const { data } = await supabaseAdmin
+      .from("shipments")
+      .select("carrier, delay_days")
+      .gt("delay_days", 0)
+      .limit(2000);
+    const agg: Record<string, { shipments: number; delay: number }> = {};
+    for (const r of (data ?? []) as any[]) {
+      agg[r.carrier] ??= { shipments: 0, delay: 0 };
+      agg[r.carrier].shipments += 1;
+      agg[r.carrier].delay += Number(r.delay_days);
+    }
+    return {
+      carriers: Object.entries(agg)
+        .map(([carrier, v]) => ({
+          carrier,
+          delayed_shipments: v.shipments,
+          avg_delay_days: Number((v.delay / v.shipments).toFixed(1)),
+        }))
+        .sort((a, b) => b.delayed_shipments - a.delayed_shipments),
+    };
+  },
   overdue_invoices: async () => {
     const { data } = await supabaseAdmin
       .from("invoices")
